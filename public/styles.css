@@ -1,0 +1,284 @@
+/* ----- Custom Styles ----- */
+/* ---------- Body Style ---------- */
+.body {
+  height: 100vh;
+  width: 100vw;
+
+  background-color: #EDE7E3;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 20px;
+  color: #1a1a1a;
+}
+
+/* ---------- Page Content ---------- */
+.contents-container { margin: 96px 20% 4% 20%; /* top | right | bottom | left*/ }
+    
+/* ---------- Login & Regsitration Content ---------- */
+/* Fixed Sidebar with welcome text */
+.sidebar-login-register {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 15%;
+  overflow-x: hidden;
+
+  background-color: #fff;
+  box-shadow: 0 2px 8px #cccccc; /* offset-x | offset-y | blur-radius | color */
+}
+.welcome-container {
+  margin-top: 96px;
+  display: inline-block;
+}
+.welcome-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.3vw;
+  text-align: center;
+  line-height: 2;
+}
+
+/* Login/Rgsitration Form */
+.card {
+  width: auto;
+  margin-left: 30%;
+
+  border-radius: 4px;
+  box-shadow: 0 0 1em #cccccc; /* offset-x | offset-y | blur-radius | color*/
+}
+.card-body { margin: 8px; }
+
+/* Title Style*/
+.card h1 {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+/* Div for E-Mail address */
+#email { margin-bottom: 16px; }
+
+/* Title for each input */
+label.form-label {
+  margin: 0;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* Text inside the input */
+input.form-control {
+  font-size: 14px;
+  border-color: #a6a6a6;
+}
+
+/* Style of the input when on focus */
+input.form-control:focus {
+  border-color: #489fb5;
+  box-shadow: 2px 2px 8px 1px #82c0cc; /* offset-x | offset-y | blur-radius | spread-radius | color*/
+}
+
+/* Div for Password */
+#password { margin-bottom: 4px; }
+a.forgot-password { font-size: 15px; }
+#rePassword { margin-top: 16px; }
+ 
+/* Style of the button */
+.card button.w-100 {
+  margin-top: 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #fff ;
+
+  background-color: #16697a;
+  border-color: transparent;
+}
+
+/* Style of the button when on hover/focus */
+.card button.w-100:hover,
+.card button.w-100:focus {
+  background-color: #489fb5;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.w-100.text-center.mt-2 { margin-bottom: 20px; }
+
+/* ---------- Home Content ---------- */
+.home-content1,
+.home-content2,
+.home-content3 {
+  width: 75vw;
+  padding: 18px 40px 18px 40px;
+  margin-bottom: 60px;
+    
+  background-color: #fdfdfc;
+  border-radius: 8px;
+  border: solid #489FB5 2px;
+}    
+.home-content1 p,
+.home-content2 p,
+.home-content3 p {
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+/* ---------- Search User Content ---------- */
+/* Hide Spinners from Number input */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.search-zip-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+#zip-code { margin-left: 20%; }
+.zip-input, 
+.search-radius {
+  margin-right: 40px;
+  margin-bottom: 20px;
+  padding: 4px;
+
+  background-color: #fdfdfc;
+  border: solid 2px #a6a6a6;
+  border-radius: 8px;
+}
+.zip-input:focus, 
+.search-radius:focus {
+  outline: none;
+  border-color: #489fb5;
+  box-shadow: 2px 2px 8px 1px #82c0cc
+}
+#zip-code input::placeholder {
+  padding: 8px;
+  font-size: 16px;
+}
+.zip-button {
+  font-size: 18px;
+  color: #fdfdfc;
+  background-color: #16697a;
+  border-color: transparent;
+  border-radius: 8px;
+}
+.zip-button:hover {
+  background-color: #489fb5
+}
+
+/* ---------- Fixed Header & Sidebar ---------- */
+/* Header Style */
+header {  
+  position: fixed; /* fixed at the top when scrolling */
+  top: 0;
+  left: 0;
+  
+  height: 60px;
+  width: 100%;
+  
+  background-color: #82C0CC;
+  border: 0;
+  border-radius: 0 0 8px 0; /* top-left | top-right | bottom-right | bottom-left */
+  box-shadow: 2px 0 8px #999999; /* offset-x | offset-y | blur-radius | color */
+}
+  
+/* Font Style of the header title */
+.header-title {
+  padding-top: 12px;
+  padding-left: 20%;
+  
+  font-family: 'Nunito', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #1a1a1a;
+}
+  
+/* Fixed Sidebar with icons & text */
+.sidebar {
+  position: fixed; /* fixed at the left site when scrolling */
+  top: 60px; /* Starts at the end of the header height */
+  left: 0;
+  bottom: 0;
+  width: 15%; /* Takes up only 15% of the total screen width */
+  overflow-x: hidden; /* Prrevents horizontal scrolling*/
+  
+  background-color: #fff;
+  border: 0;
+  border-radius: 0 8px 0 0; /* top-left | top-right | bottom-right | bottom-left */
+  box-shadow: 0 2px 8px #cccccc; /* offset-x | offset-y | blur-radius | color */
+}
+  
+/* Container with icons */
+.icons-container {
+  margin: 36px 5px; /* top & bottom | left& right */
+  position: static; /* positioned according to the flow of the page */
+  
+  text-align: center;
+  color: #808080;
+}
+.icons-container a {
+  text-decoration: none;
+  color: #808080;
+}
+/* Size of the icons */
+.material-icons { font-size: 36px; }
+  
+/* Font sytle of the icons text */
+.icons p {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+}
+  
+/* Change color of current icon */
+.icons-container .active{
+  color: #ffa62b;
+  font-weight: 600;
+  text-decoration: underline solid 2px;
+}
+  
+/* Change color of icons & text on hover */
+.icons-container a:hover {
+  color: #ffa62b;
+  text-decoration: underline solid 2px;
+}
+    
+/* ----------- Media query ---------- */
+/* Change layout for smaller screen sizes */
+@media only screen and (max-width: 768px) {
+  .body { font-size: 16px; } 
+  .contents-container { margin-top: 76px; }
+  header { height: 40px; }
+  .header-title {
+    padding-top: 10px;
+    font-size: 18px;
+  }
+
+  .sidebar { top: 40px; }
+  .icons p { display: none; }
+   
+  .home-content1,
+  .home-content2,
+  .home-content3 { margin-bottom: 40px; }
+  
+  .sidebar-login-register { display: none;}
+  .card {
+    width: auto;
+    margin: auto;
+  }
+  .card h1 { font-size: 24px; }
+
+
+}
+
+
+
+  
+
+
+  
+ 
