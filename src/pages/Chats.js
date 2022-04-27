@@ -3,7 +3,7 @@ import React from "react";
 function Chats() {
     return (
         <div>
-            <h1>Chats</h1>
+            <h1>Hello World! The implementation of the chat will be displayed here!</h1>
         </div>
     );
 }
