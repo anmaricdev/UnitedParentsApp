@@ -37,7 +37,7 @@ const handleSubmit = async (e) =>{
             
             <Form onSubmit = {handleSubmit}>
                 <Form.Group id ="username" >
-                    <Form.Label>Gewünschten Username eingeben</Form.Label>
+                    <Form.Label>Username</Form.Label>
                     <Form.Control type="username" placeholder= "Username" onChange={(e)=> setUsername(e.target.value)}/>
                 </Form.Group> 
 
