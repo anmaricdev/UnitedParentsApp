@@ -9,6 +9,7 @@ import {useUserAuth} from "../context/UserAuthContext"
 const Registration=()=> {
 const [email, setEmail] = useState("")
 const [password, setPassword] = useState("")
+const [username, setUsername] = useState("")
 const {register} = useUserAuth()
 const [error, setError] = useState("")
 const navigate = useNavigate()
@@ -17,7 +18,7 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
-        await register(email,password)
+        await register(username,email,password)
         navigate("/")
   
 
@@ -35,6 +36,11 @@ const handleSubmit = async (e) =>{
             {error && <Alert variant= "danger">{error}</Alert>}
             
             <Form onSubmit = {handleSubmit}>
+                <Form.Group id ="username" >
+                    <Form.Label>Gewünschten Username eingeben</Form.Label>
+                    <Form.Control type="username" placeholder= "Username" onChange={(e)=> setUsername(e.target.value)}/>
+                </Form.Group> 
+
                 <Form.Group id ="email" >
                     <Form.Label>E-Mail</Form.Label>
                     <Form.Control type="email" placeholder="E-Mail Adresse" onChange={(e)=> setEmail(e.target.value)}/>
