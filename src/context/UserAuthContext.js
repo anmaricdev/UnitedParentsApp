@@ -12,8 +12,8 @@ const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState("");
 
-  function register(email, password) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  function register(username, email, password) {
+    return createUserWithEmailAndPassword(auth, username, email, password);
   }
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
