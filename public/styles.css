@@ -80,6 +80,9 @@ input.form-control:focus {
 #password { margin-bottom: 4px; }
 a.forgot-password { font-size: 15px; }
 #rePassword { margin-top: 16px; }
+
+/*Div for Username */
+#username {margin-bottom: 16px;}
  
 /* Style of the button */
 .card button.w-100 {
