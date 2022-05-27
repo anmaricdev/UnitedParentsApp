@@ -18,7 +18,7 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
-        await register(username,email,password)
+        await register(email,password)
         navigate("/")
   
 
