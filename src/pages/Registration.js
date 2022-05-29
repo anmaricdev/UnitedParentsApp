@@ -4,41 +4,46 @@ import React, {useState} from "react";
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import{Link,useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
-
+import {getDatabase, ref, set} from "firebase/database";
 
 const Registration=()=> {
-const [email, setEmail] = useState("")
-const [password, setPassword] = useState("")
-const [username, setUsername] = useState("")
+const [email, setEmail] = useState("") //TUT:this hook keeps a state of a var you can dynamically update w/ setState
+const [password, setPassword] = useState("") //TUT:better null argument??
+const [repeatPassword, setRepeatPassword] = useState("")
+const [username, setUsername] = useState("") 
 const {register} = useUserAuth()
 const [error, setError] = useState("")
 const navigate = useNavigate()
+const db = getDatabase();
 
-<<<<<<< Updated upstream
-=======
-function writeUserData(username, email, name, surname){
-    set(ref(db, 'user/' + email),{ //link this by userId by getcurrentuser() email is smth temp
-        nickname: username, //database:e.state
-        email: email,
-        name: name,
-        surname: surname
-    })
+function writeUserData(username, mail){
+    var userRef = db +'users/' + email;
+    console.log(userRef);
+    set(ref(db,'users/'),{nickname: username, mail: mail});
 }
+
+const validatePassword = () => {
+    let isValid = true
+    if (password !== ''){
+      if (password !== repeatPassword) {
+        isValid = false
+        setError('Passwords does not match')
+      }
+    }
+    return isValid
+  }
         
->>>>>>> Stashed changes
 const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
-        await register(email,password)
-<<<<<<< Updated upstream
-=======
-        //const newUser = firebase.auth().currentUser; not working
-
-        writeUserData(username, email, null, null)
->>>>>>> Stashed changes
-        navigate("/")
-  
+        if(validatePassword){
+            await register(email,password)
+            //const newUser = firebase.auth().currentUser; not working
+            var userPath = email.toString();
+            writeUserData(username, email)
+            navigate("/")
+        }
 
     } catch(err) {
         setError(err.message);
@@ -71,7 +76,7 @@ const handleSubmit = async (e) =>{
 
                 <Form.Group id ="rePassword" >
                     <Form.Label>Passwort Wiederholen</Form.Label>
-                    <Form.Control type="Password" placeholder= "Passwort wiederholen" />
+                    <Form.Control type="Password" placeholder= "Passwort wiederholen" onChange={(e)=> setRepeatPassword(e.target.value)}/>
                 </Form.Group> 
 
                 <div className="d-grid gap-2">
