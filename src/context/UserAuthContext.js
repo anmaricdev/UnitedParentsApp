@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../Firebase";
+import {getDatabase, ref, set } from "firebase/database";
 
 const userAuthContext = createContext();
 
@@ -18,6 +19,7 @@ export function UserAuthContextProvider({ children }) {
   function login(email, password) {
     return signInWithEmailAndPassword(auth, email, password);
   }
+  //function getUserId()
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       console.log(currentUser);
@@ -29,7 +31,7 @@ export function UserAuthContextProvider({ children }) {
   }, []);
 
   return (
-    <userAuthContext.Provider value={{ user, register, login }}>
+    <userAuthContext.Provider value={{ user, register, login}}>
       {children}
     </userAuthContext.Provider>
   );
