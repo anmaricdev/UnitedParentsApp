@@ -4,21 +4,40 @@ import React, {useState} from "react";
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import{Link,useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
+import {getDatabase, ref, set } from "firebase/database";
+
+
 
 
 const Registration=()=> {
-const [email, setEmail] = useState("")
-const [password, setPassword] = useState("")
-const [username, setUsername] = useState("")
+const [email, setEmail] = useState("") //TUT:this hook keeps a state of a var you can dynamically update w/ setState
+const [password, setPassword] = useState("") //TUT:better null argument??
+const [repeatPassword, setRepeatPassword] = useState("")
+const [username, setUsername] = useState("") 
 const {register} = useUserAuth()
 const [error, setError] = useState("")
 const navigate = useNavigate()
+const db = getDatabase();
 
+
+function writeUserData(userId, username, email, name, surname){
+    set(ref(db, 'user/' + userId),{ //link this by userId by getcurrentuser()
+        nickname: username, //database:e.state
+        email: email,
+        name: name,
+        surname: surname
+    })
+}
+        
 const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
+        //if password === repeatPassword, we need some checking
         await register(email,password)
+        const newUser = firebase.auth().currentUser;
+
+        writeUserData("newId", username, email, null, null)
         navigate("/")
   
 
@@ -33,7 +52,7 @@ const handleSubmit = async (e) =>{
        <Card>
            <Card.Body>
             <h1 className="text-center mb-4">Registrieren</h1>
-            {error && <Alert variant= "danger">{error}</Alert>}
+            {error && <Alert variant= "danger">{error}</Alert>} {/*TUT:when and what this alert mean*/}
             
             <Form onSubmit = {handleSubmit}>
                 <Form.Group id ="username" >
@@ -53,7 +72,7 @@ const handleSubmit = async (e) =>{
 
                 <Form.Group id ="rePassword" >
                     <Form.Label>Passwort Wiederholen</Form.Label>
-                    <Form.Control type="Password" placeholder= "Passwort wiederholen" />
+                    <Form.Control type="Password" placeholder= "Passwort wiederholen" onChange={(e)=> setRepeatPassword(e.target.value)} />
                 </Form.Group> 
 
                 <div className="d-grid gap-2">
