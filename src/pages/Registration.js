@@ -14,11 +14,29 @@ const {register} = useUserAuth()
 const [error, setError] = useState("")
 const navigate = useNavigate()
 
+<<<<<<< Updated upstream
+=======
+function writeUserData(username, email, name, surname){
+    set(ref(db, 'user/' + email),{ //link this by userId by getcurrentuser() email is smth temp
+        nickname: username, //database:e.state
+        email: email,
+        name: name,
+        surname: surname
+    })
+}
+        
+>>>>>>> Stashed changes
 const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
         await register(email,password)
+<<<<<<< Updated upstream
+=======
+        //const newUser = firebase.auth().currentUser; not working
+
+        writeUserData(username, email, null, null)
+>>>>>>> Stashed changes
         navigate("/")
   
 
