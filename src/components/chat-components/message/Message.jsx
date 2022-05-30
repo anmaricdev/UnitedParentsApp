@@ -6,7 +6,7 @@ export default function Message({own}){
     return(
         <div className={own? "message own": "message"}>
             <div className="messageTop">
-                <img className="messageImg" src="./pictures/Avatar.jpg" alt=""/>
+                <img className="messageImg" src="pictures/Avatar.jpg" alt=""/>
                 <p className="messageText">
                     Hello!
                 </p>

@@ -47,7 +47,7 @@ export default function Conversation({conversation, currentUser}) {
 
     return(
         <div className="conversation">
-            <img className="conversationImg" src="./images/fra-uas-logo.svg" alt=""/>
+            <img className="conversationImg" src="pictures/Avatar.jpg" alt=""/>
             <span className="conversationName">{user.username}</span>
         </div>
     )
