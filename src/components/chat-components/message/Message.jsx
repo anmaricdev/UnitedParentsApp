@@ -1,3 +1,4 @@
+//author Nora Kolasinac 1257519
 import React from "react";
 import "./Message.css"
 
@@ -5,9 +6,9 @@ export default function Message({own}){
     return(
         <div className={own? "message own": "message"}>
             <div className="messageTop">
-                <img className="messageImg" src="./images/fra-uas-logo.svg" alt=""/>
+                <img className="messageImg" src="./pictures/Avatar.jpg" alt=""/>
                 <p className="messageText">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Hello!
                 </p>
 
             </div>
