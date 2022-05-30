@@ -5,6 +5,7 @@ import {Form, Button, Card, Alert} from 'react-bootstrap'
 import{Link,useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
 import {getDatabase, ref, set} from "firebase/database";
+import {getAuth} from "firebase/auth";
 
 const Registration=()=> {
 const [email, setEmail] = useState("") //TUT:this hook keeps a state of a var you can dynamically update w/ setState
@@ -16,10 +17,15 @@ const [error, setError] = useState("")
 const navigate = useNavigate()
 const db = getDatabase();
 
+
 function writeUserData(username, mail){
-    var userRef = db +'users/' + email;
-    console.log(userRef);
-    set(ref(db,'users/'),{nickname: username, mail: mail});
+    //var userRef = db +'users/' + email
+    const auth = getAuth()
+    const auxUid = auth.getInstance().getCurrentUser().getUid();
+    //var userwhatever = auth.currentUser;
+    //var str = email.toString();
+    //console.log(userRef);
+    set(ref(db,'users/' + auxUid),{nickname: username, mail: mail});
 }
 
 const validatePassword = () => {
@@ -40,7 +46,7 @@ const handleSubmit = async (e) =>{
         if(validatePassword){
             await register(email,password)
             //const newUser = firebase.auth().currentUser; not working
-            var userPath = email.toString();
+            //var userPath = email.toString();
             writeUserData(username, email)
             navigate("/")
         }
