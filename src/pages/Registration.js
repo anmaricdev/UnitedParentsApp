@@ -26,30 +26,26 @@ function writeUserData(username, mail){
     if (student !== null){
         const sid = student.uid;
         set(ref(db,'users/' + sid),{Username: username, Email: email,});
+        console.log('Username saved as ' + username);
+        student.displayName = username;
+        console.log('el displayname es: ' + student.displayName);
     }
 }
-// Author: Eneas
-// function to validate that the passwords entered are matching
-const validatePassword = () => {
-    let isValid = true
-    if (password !== ''){
-      if (password !== repeatPassword) {
-        isValid = false
-        setError('Passwords does not match')
-      }
-    }
-    return isValid
-  }
+
         
 const handleSubmit = async (e) =>{
     e.preventDefault()
     setError("")
     try{
-        if(validatePassword){
+        /*Agustin Harispe Lucarelli. password matching clause and alert added*/
+        if(password === repeatPassword){
+            console.log("password is: " + password);
             await register(email,password)
+            console.log("the confirmation pass is: " + repeatPassword);
             writeUserData(username, email)
             navigate("/")
-        }
+        }else alert("Your passwords do not match!");
+        
 
     } catch(err) {
         setError(err.message);
@@ -81,7 +77,7 @@ const handleSubmit = async (e) =>{
                     <Form.Label>Passwort</Form.Label>
                     <Form.Control type="password" placeholder="Passwort" onChange={(e)=> setPassword(e.target.value)}/>
                 </Form.Group>
-
+                {/*Agustin Harispe Lucarelli. repeatPassword handler added*/}
                 <Form.Group id ="rePassword" >
                     <Form.Label>Passwort Wiederholen</Form.Label>
                     <Form.Control type="Password" placeholder= "Passwort wiederholen" onChange={(e)=> setRepeatPassword(e.target.value)}/>
