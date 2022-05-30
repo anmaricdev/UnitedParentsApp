@@ -17,17 +17,19 @@ const [error, setError] = useState("")
 const navigate = useNavigate()
 const db = getDatabase();
 
-
+// Authors: Ante Maric [Lines 24 - 29] & Eneas [Lines 23 & 30]
+// after a successful registration, the username entered is saved in the database under the user which is 
+// identified via the student(user)id
 function writeUserData(username, mail){
-    //var userRef = db +'users/' + email
     const auth = getAuth()
-    const auxUid = auth.getInstance().getCurrentUser().getUid();
-    //var userwhatever = auth.currentUser;
-    //var str = email.toString();
-    //console.log(userRef);
-    set(ref(db,'users/' + auxUid),{nickname: username, mail: mail});
+    const student = auth.currentUser;
+    if (student !== null){
+        const sid = student.uid;
+        set(ref(db,'users/' + sid),{Username: username, Email: email,});
+    }
 }
-
+// Author: Eneas
+// function to validate that the passwords entered are matching
 const validatePassword = () => {
     let isValid = true
     if (password !== ''){
@@ -45,8 +47,6 @@ const handleSubmit = async (e) =>{
     try{
         if(validatePassword){
             await register(email,password)
-            //const newUser = firebase.auth().currentUser; not working
-            //var userPath = email.toString();
             writeUserData(username, email)
             navigate("/")
         }
@@ -56,7 +56,9 @@ const handleSubmit = async (e) =>{
 
     }
 }
-
+    // Author Ante Maric => [Lines 66 - 70]
+    // added a card on top of the registration panel to enter a username 
+    // which is then saved in the database for further usage (see code starting Line 23)
     return (
        <div className="login-container">
        <Card>
