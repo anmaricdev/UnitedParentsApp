@@ -1,3 +1,4 @@
+//author Nora Kolasinac 1257519
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
@@ -81,7 +82,7 @@ function Chats() {
                     <div className="chatBoxBottom">
                         <textarea 
                         className="chatMessageInput"
-                        placeholder="Ey write something.. !"
+                        placeholder="Write something.. !"
                         ></textarea>
                         <button className="chatSubmitButton"> Send</button>
                     </div> </> : <span className="noConversationText"> Open a conversation to start a chat.</span>}
