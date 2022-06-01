@@ -25,10 +25,8 @@ function writeUserData(username, mail){
     const student = auth.currentUser;
     if (student !== null){
         const sid = student.uid;
-        set(ref(db,'users/' + sid),{Username: username, Email: email,});
-        console.log('Username saved as ' + username);
+        set(ref(db,'users/' + sid),{Username: username, Email: mail,});
         student.displayName = username;
-        console.log('el displayname es: ' + student.displayName);
     }
 }
 
@@ -39,9 +37,7 @@ const handleSubmit = async (e) =>{
     try{
         /*Agustin Harispe Lucarelli. password matching clause and alert added*/
         if(password === repeatPassword){
-            console.log("password is: " + password);
             await register(email,password)
-            console.log("the confirmation pass is: " + repeatPassword);
             writeUserData(username, email)
             navigate("/")
         }else alert("Your passwords do not match!");
