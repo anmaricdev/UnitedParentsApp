@@ -17,7 +17,7 @@ const [error, setError] = useState("")
 const navigate = useNavigate()
 const db = getDatabase();
 
-// Authors: Ante Maric [Lines 24 - 29] & Eneas [Lines 23 & 30]
+// Authors: Ante Maric (1273904) [Lines 23 - 28] & Eneas [Lines 29 - 31]
 // after a successful registration, the username entered is saved in the database under the user which is 
 // identified via the student(user)id
 function writeUserData(username, mail){
@@ -25,11 +25,12 @@ function writeUserData(username, mail){
     const student = auth.currentUser;
     if (student !== null){
         const sid = student.uid;
-        set(ref(db,'users/' + sid),{Username: username, Email: mail,});
+        set(ref(db,'users/' + sid),{Username: username, Email: email,});
+        console.log('Username saved as ' + username);
         student.displayName = username;
+        console.log('el displayname es: ' + student.displayName);
     }
 }
-
         
 const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -37,7 +38,9 @@ const handleSubmit = async (e) =>{
     try{
         /*Agustin Harispe Lucarelli. password matching clause and alert added*/
         if(password === repeatPassword){
+            console.log("password is: " + password);
             await register(email,password)
+            console.log("the confirmation pass is: " + repeatPassword);
             writeUserData(username, email)
             navigate("/")
         }else alert("Your passwords do not match!");
@@ -48,7 +51,7 @@ const handleSubmit = async (e) =>{
 
     }
 }
-    // Author Ante Maric => [Lines 66 - 70]
+    // Author: Ante Maric (1273904) => [Lines 65 - 69]
     // added a card on top of the registration panel to enter a username 
     // which is then saved in the database for further usage (see code starting Line 23)
     return (
