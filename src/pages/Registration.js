@@ -20,15 +20,15 @@ const db = getDatabase();
 // Authors: Ante Maric (1273904) [Lines 23 - 28] & Eneas [Lines 29 - 31]
 // after a successful registration, the username entered is saved in the database under the user which is 
 // identified via the student(user)id
-function writeUserData(username, mail){
+function writeUserData(username, email){
     const auth = getAuth()
     const student = auth.currentUser;
     if (student !== null){
         const sid = student.uid;
-        set(ref(db,'users/' + sid),{Username: username, Email: email,});
+        set(ref(db,'users/' + sid),{Username: username, Email: email, isAdmin: false});
         //console.log('Username saved as ' + username);
         student.displayName = username;
-        //console.log('el displayname es: ' + student.displayName);
+        //console.log('The displayname is: ' + student.displayName);
     }
 }
         

@@ -1,11 +1,29 @@
 //author Nora Kolasinac 1257519
-import { onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
 import Message from "../components/chat-components/message/Message";
+import {getDatabase, ref, get} from "firebase/database";
 import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../Firebase";
 import "../pages/pages-css/Chats.css"
+
+const db = getDatabase();
+
+/*function getMyProfile (){
+    const auth = getAuth();
+    const student = auth.currentUser;
+    if (student !== null){
+    const sid = student.uid
+    const refUsername = db.ref('users/' + sid + '/username');
+
+    refUsername.on('value', (snapshot) => {
+        console.log(snapshot.val());
+    }, (errorObject) => {
+        console.log('The read failed: ' + errorObject.name);
+    });
+    }
+}*/
 
 function Chats() {
     // const [user, setUser] = useState(null)
@@ -71,12 +89,18 @@ function Chats() {
                         <Message></Message>
                         <Message own={true}></Message>
                         <Message></Message>
-                        <Message own={true}></Message><Message></Message>
-                        <Message own={true}></Message><Message></Message>
-                        <Message own={true}></Message><Message></Message>
-                        <Message own={true}></Message><Message></Message>
-                        <Message own={true}></Message><Message></Message>
-                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
+                        <Message own={true}></Message>
+                        <Message></Message>
                         <Message own={true}></Message>
                     </div>
                     <div className="chatBoxBottom">
