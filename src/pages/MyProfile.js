@@ -14,13 +14,15 @@ const student = auth.currentUser;
 var studentName;
 //PLEASE DONT CHANGE THIS CODE UNTIL I UNDERSTAND WHY IT WORKS
 function MyName(){
-    return onValue(ref(db, '/users/' + student.uid), (snapshot) => {
-        studentName = (snapshot.val().Username) || 'Anonymous';
+  if (student !== null){
+    return onValue(ref(db, '/users/' + student.uid + '/Username'), (snapshot) => {
+        studentName = (snapshot.val()) || 'Anonymous'; //.Username
         console.log("snapshot is: ")
         console.log(studentName)
       }, {
         onlyOnce: true
       });
+    }
     
 }
 
@@ -32,10 +34,10 @@ function MyProfile() {
 
     console.log('userAuth is:');
     console.log(userAuth);
-    console.log('userame is: ' + studentName); //after some time this is also null omg
+    console.log('username is: ' + studentName); //after some time this is also null omg
     console.log('email is: ' + userAuth.user.email);
     console.log('uid is: '+ userAuth.user.uid);
-    //console.log('STUDENT userame is: ' + student.displayName); //this is null in the object dont know why
+    //console.log('STUDENT username is: ' + student.displayName); //this is null in the object dont know why
     console.log('STUDENT email is: ' + student.email);
     console.log('STUDENT uid is: '+ student.uid);
     
