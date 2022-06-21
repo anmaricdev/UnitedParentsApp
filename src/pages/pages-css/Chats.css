@@ -3,6 +3,7 @@
     height: calc(90vh - 70px);
     display: flex;
     width: calc(120vh - 90px);
+    background-color: white;
 }
 
 .chatMenu {
@@ -14,7 +15,7 @@
 }
 
 .chatMenuInput {
-    width: 90%;
+    width: 100%;
     padding: 10px 0;
     border: none;
     border-bottom: 1px solid gray;

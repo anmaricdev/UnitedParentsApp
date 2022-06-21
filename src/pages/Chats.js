@@ -5,7 +5,8 @@ import Conversation from "../components/chat-components/conversations/Conversati
 import Message from "../components/chat-components/message/Message";
 import {getDatabase, ref, get, onValue} from "firebase/database";
 import { useUserAuth } from "../context/UserAuthContext";
-import "../pages/pages-css/Chats.css"
+import "../pages/pages-css/Chats.css";
+import ChatHeader from "../components/chat-components/chat-header/chat-header";
 
 const db = getDatabase();
 const auth = getAuth()
@@ -81,16 +82,53 @@ function Chats() {
        'updatedAt':"2022-05-15T10:22:22.262Z",
       }]); // Array conversations test - ersetzen durch getConversationsForuser() - Api Request
 
+      const friendsForTest = [
+        {
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id2@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id2 Jane Doe",
+            id: "id2"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id3@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id3 John D.",
+            id: "id3"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id4@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id4 Username",
+            id: "id4"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id5@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id5 Username",
+            id: "id5"
+        },] // Array of users Tests // ersetzen durch getAllUsers() api Request;
+
+      const [infoForHeader, setInfoForHeader] = useState(null);
       const user = {name: studentName, id: "id1"}; // ersetzen durch getmyProfile() api request
+      const childToParent = () => {
+        // eslint-disable-next-line no-const-assign
+        setCurrentChat(null);
+      }
 
     return (
         <>
         <div className="messenger">
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                    <input placeholder="Search friends" className="chatMenuInput" />
+                    <input disabled="true" placeholder="Chats" className="chatMenuInput" />
                     {conversations.map(c => (
-                        <div onClick={() => setCurrentChat(c)}>
+                        <div onClick={() => {setCurrentChat(c); 
+                            setInfoForHeader(friendsForTest.find(f => f.id === c.members[1]).username)}}>
                             <Conversation conversation={c} currentUser={user}></Conversation>
                         </div>    
                     ))}
@@ -101,6 +139,7 @@ function Chats() {
                     {
                         currentChat ?
                         <>
+                     <ChatHeader name = {infoForHeader} childToParent = {childToParent}></ChatHeader>   
                     <div className="chatBoxTop">
                         <Message></Message>
                         <Message own={true}></Message>

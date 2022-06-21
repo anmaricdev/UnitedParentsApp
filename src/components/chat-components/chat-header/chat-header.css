@@ -1,0 +1,42 @@
+/* Made by Nora 20.06.2022*/
+
+.name-header-header{
+    display: flex;
+    flex-direction: row;  
+    margin-top: 20px;
+    margin-left: 15rem; 
+    /* flex-direction: center; */
+    /* align-content: center; */
+    /* gap: 30rem; */
+}
+
+.button-header{
+    display: flex;
+    position: relative;
+    
+}
+
+.header-left{
+    display: flex;
+    align-content: center;
+}
+
+.header-top{
+    display: flex;
+    /* align-content: center; */
+}
+
+.header-img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.name-header{
+    padding: 10px;
+    border-radius: 20px;
+    color: black;
+    max-width: 400px;
+}
