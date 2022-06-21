@@ -3,12 +3,29 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
 import Message from "../components/chat-components/message/Message";
-import {getDatabase, ref, get} from "firebase/database";
+import {getDatabase, ref, get, onValue} from "firebase/database";
 import { useUserAuth } from "../context/UserAuthContext";
-import { auth } from "../Firebase";
 import "../pages/pages-css/Chats.css"
 
 const db = getDatabase();
+const auth = getAuth()
+
+
+const student = auth.currentUser;
+var studentName;
+//PLEASE DONT CHANGE THIS CODE UNTIL I UNDERSTAND WHY IT WORKS
+function MyName(){
+  if (student !== null){
+    return onValue(ref(db, '/users/' + student.uid + '/Username'), (snapshot) => {
+        studentName = (snapshot.val()) || 'Anonymous'; //.Username
+        console.log("snapshot is: ")
+        console.log(studentName)
+      }, {
+        onlyOnce: true
+      });
+    }
+    
+}
 
 /*function getMyProfile (){
     const auth = getAuth();
@@ -26,6 +43,7 @@ const db = getDatabase();
 }*/
 
 function Chats() {
+    MyName();
     // const [user, setUser] = useState(null)
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([])
@@ -63,7 +81,7 @@ function Chats() {
        'updatedAt':"2022-05-15T10:22:22.262Z",
       }]); // Array conversations test - ersetzen durch getConversationsForuser() - Api Request
 
-      const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
+      const user = {name: studentName, id: "id1"}; // ersetzen durch getmyProfile() api request
 
     return (
         <>
