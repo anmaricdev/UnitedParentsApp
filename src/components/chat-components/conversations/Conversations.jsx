@@ -1,7 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./conversations.css"
+import { getDatabase, ref, child, get, endBefore, endAt, query } from "firebase/database";
+import { useUserAuth } from "../../../context/UserAuthContext";
+
+const db = getDatabase()//.ref('TestConversation/conv1');
+var myConver = null;
+
+function GetTestConver(user){
+    const aux = query(ref(db, 'TestConversation/conv1'), endAt('20220621164714'))
+    console.log('MY aux IS DISPLAYED AS:')
+    console.log(aux)
+}
+
 
 export default function Conversation({conversation, currentUser}) {
+    const student = useUserAuth().user.auth.currentUser
+    if(myConver == null){
+        GetTestConver(student)
+        //console.log('MY CONVER IS DISPLAYED AS:')
+       // console.log(myConver)
+    }
     const [user, setUser] = useState("");
     const friendsForTest = [
         {
@@ -40,7 +58,7 @@ export default function Conversation({conversation, currentUser}) {
             const friendId = conversation.members.find( m => m !== currentUser.id );
             const friend = friendsForTest.find(f => f.id === friendId);
             setUser(friend)
-            console.log("🚀 ~ file: Conversations.jsx ~ line 40 ~ useEffect ~ friend", friend)
+            //console.log("🚀 ~ file: Conversations.jsx ~ line 40 ~ useEffect ~ friend", friend)
         }
     })
 
