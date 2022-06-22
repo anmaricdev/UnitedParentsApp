@@ -145,9 +145,9 @@ function Chats() {
                         <Message own={true}></Message><Message></Message>
                         <Message own={true}></Message><Message></Message>
                         <Message own={true}></Message>
-                    </div>
-                    <div className="chatBoxBottom">
-                        <Form onSubmit = {handleMessage}>
+                    </div> {/*Agustin Eneas Harispe 1384848 - wrapping chatBoxBottom in onSubmit Form*/}
+                    <div className="chatBoxBottom"> 
+                        <Form onSubmit = {handleMessage}> 
                             <div className="chatBoxBottom">
                             <textarea 
                             className="chatMessageInput"

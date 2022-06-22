@@ -1,3 +1,4 @@
+//Ante Maric & Eneas Harispe
 import React from "react";
 //import React, {useState} from "react";
 import {Card} from 'react-bootstrap'
@@ -7,7 +8,7 @@ import {getDatabase, ref,  onValue} from "firebase/database";
 const db = getDatabase();
 
 var studentName;
-
+//Ante Maric(14,16-17) & Eneas Harispe(12,20-24)
 function MyName(student){
   
   if (student.displayName == null){ //if displayname is not already saved or was erased in the session
