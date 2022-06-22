@@ -7,7 +7,7 @@ import {Form, Button, Card, Alert} from 'react-bootstrap'
 import{Link, useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
 import {getDatabase, ref, get, child, onValue} from "firebase/database";
-import {getFirestore, setDoc, doc, Timestamp} from 'firebase/firestore';
+import {getFirestore, setDoc, doc, Timestamp, documentId, addDoc, collection} from 'firebase/firestore';
 
 const dbFS = getFirestore();
 
@@ -16,6 +16,8 @@ const date = new Date();
 function Settings() {
     const userAuth = useUserAuth()
     const student = userAuth.user.auth.currentUser
+
+    const randomId = (Date.now()).toString
 
 
 
@@ -32,8 +34,8 @@ function Settings() {
         e.preventDefault()
         setError("")
         try{
-            await setDoc(doc(dbFS, "messages", "chat"), {
-                text: sendMessage,
+            await addDoc(collection(dbFS, "messages"), {
+                 text: sendMessage,
                  createdAt: Timestamp.fromDate(new Date()),
                  username: student.displayName,
                  userID: student.uid
@@ -44,7 +46,7 @@ function Settings() {
         }catch(err){
             setError(err.message);
         }
-    } 
+    }
     
     return (
         <Form onSubmit = {handleSubmit}>
