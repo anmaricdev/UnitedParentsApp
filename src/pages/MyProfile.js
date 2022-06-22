@@ -12,7 +12,6 @@ const dbFS = getFirestore();
 const auth = getAuth()
 
 var studentName;
-var mySnapshot = {};
 
 function MyName(student){
   
@@ -31,13 +30,6 @@ function MyName(student){
 }
 
 
-function FsMessage() {
-  
-    
-      console.log("snap is:");
-      console.log(dbFS.collection());
-  
-}
 
 
 function MyProfile() {
@@ -50,7 +42,7 @@ function MyProfile() {
     console.log("studentname is pls:");
     console.log(studentName);
 
-    FsMessage();
+  
 
     //console.log('userAuth is:');
     //console.log(userAuth);
