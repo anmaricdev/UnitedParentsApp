@@ -12,8 +12,24 @@ import {getFirestore, setDoc, doc, Timestamp, documentId, addDoc, collection} fr
 const dbFS = getFirestore();
 
 const date = new Date();
+export function PostMessage(sendMessage){
+    //maybe pass this as parameter
+    const userAuth = useUserAuth()
+    const student = userAuth.user.auth.currentUser
 
-function Settings() {
+    const newMessageRef = addDoc(collection(dbFS, "messages"), {
+        text: sendMessage,
+        createdAt: Timestamp.fromDate(new Date()),
+        username: student.displayName,
+        userID: student.uid
+      });
+   console.log(sendMessage)
+   console.log("Current message written with ID: ", newMessageRef.id);
+
+}
+
+
+function SendMessageF() {
     const userAuth = useUserAuth()
     const student = userAuth.user.auth.currentUser
 
@@ -30,7 +46,7 @@ function Settings() {
     const navigate = useNavigate()
     const [sendMessage, setMess] = useState()
 
-    const handleMessage = async (e) =>{
+    const handleSubmit = async (e) =>{
         e.preventDefault()
         setError("")
         try{
@@ -50,7 +66,7 @@ function Settings() {
     }
     
     return (
-        <Form onSubmit = {handleMessage}>
+        <Form onSubmit = {handleSubmit}>
             <div className="chatBoxBottom">
             <textarea 
             className="chatMessageInput"
@@ -63,4 +79,4 @@ function Settings() {
     );
 };
 
-export default Settings;
+export default SendMessageF;

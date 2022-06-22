@@ -6,10 +6,21 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../Firebase";
 import "../pages/pages-css/Chats.css"
 
+import {Form, Button, Card, Alert} from 'react-bootstrap'
+//import {PostMessage} from "../components/SendMessage.js"
+import {getFirestore, setDoc, doc, Timestamp, documentId, addDoc, collection} from 'firebase/firestore';
+
+const dbFS = getFirestore();
+
+
 function Chats() {
+
+    const userAuth = useUserAuth()
+    const student = userAuth.user.auth.currentUser
     // const [user, setUser] = useState(null)
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([])
+    const [sendMessage, setMess] = useState()
     const [conversations, setConversations] = useState([
         {
          'id': "2f898b4f-b684-4821-b46f-f0f7831c020a",
@@ -46,6 +57,25 @@ function Chats() {
 
       const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
 
+    const handleMessage = async (e) =>{
+        e.preventDefault()
+        //setError("")
+        try{
+            const newMessageRef = await addDoc(collection(dbFS, "messages"), {
+                 text: sendMessage,
+                 createdAt: Timestamp.fromDate(new Date()),
+                 username: student.displayName,
+                 userID: student.uid
+               });
+            console.log(sendMessage)
+            console.log("Current message written with ID: ", newMessageRef.id);
+            //navigate("/home")
+    
+        }catch(err){
+           // setError(err.message);
+        }
+    }
+     
     return (
         <>
         <div className="messenger">
@@ -79,11 +109,16 @@ function Chats() {
                         <Message own={true}></Message>
                     </div>
                     <div className="chatBoxBottom">
-                        <textarea 
-                        className="chatMessageInput"
-                        placeholder="Ey write something.. !"
-                        ></textarea>
-                        <button className="chatSubmitButton"> Send</button>
+                        <Form onSubmit = {handleMessage}>
+                            <div className="chatBoxBottom">
+                            <textarea 
+                            className="chatMessageInput"
+                            placeholder="Ey write something.. !" onClick={(e)=> setMess(e.target.value)}
+                            ></textarea>
+                            <button className="chatSubmitButton"> Send</button>
+                            </div>
+                        </Form>
+                        
                     </div> </> : <span className="noConversationText"> Open a conversation to start a chat.</span>}
                 </div>
             </div>
