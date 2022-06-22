@@ -41,7 +41,7 @@ export default function Conversation({conversation, currentUser}) {
             const friendId = conversation.members.find( m => m !== currentUser.id );
             const friend = friendsForTest.find(f => f.id === friendId);
             setUser(friend)
-            console.log("🚀 ~ file: Conversations.jsx ~ line 40 ~ useEffect ~ friend", friend)
+            //console.log("🚀 ~ file: Conversations.jsx ~ line 40 ~ useEffect ~ friend", friend)
         }
     })
 

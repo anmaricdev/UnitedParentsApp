@@ -1,9 +1,11 @@
+//Author Nora Kolasinac 1257519 - UI
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
 import Message from "../components/chat-components/message/Message";
 import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../Firebase";
+import ChatHeader from "../components/chat-components/chat-header/chat-header";
 import "../pages/pages-css/Chats.css"
 
 import {Form, Button, Card, Alert} from 'react-bootstrap'
@@ -55,6 +57,39 @@ function Chats() {
        'updatedAt':"2022-05-15T10:22:22.262Z",
       }]); // Array conversations test - ersetzen durch getConversationsForuser() - Api Request
 
+    const friendsForTest = [
+        {
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id2@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id2 Jane Doe",
+            id: "id2"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id3@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id3 John D.",
+            id: "id3"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id4@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id4 Username",
+            id: "id4"
+        },{
+            createdAt: "2020-02-22T10:10:10.122Z",
+            email: "id5@gmail.com",
+            isAdmin: false,
+            profilePicture: "",
+            username: "id5 Username",
+            id: "id5"
+        },
+    ]
+      const [infoForHeader, setInfoForHeader] = useState(null);
+
       const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
 
     const handleMessage = async (e) =>{
@@ -83,7 +118,8 @@ function Chats() {
                 <div className="chatMenuWrapper">
                     <input placeholder="Search friends" className="chatMenuInput" />
                     {conversations.map(c => (
-                        <div onClick={() => setCurrentChat(c)}>
+                        <div onClick={() => {setCurrentChat(c); 
+                            setInfoForHeader(friendsForTest.find(f => f.id === c.members[1]).username)}}>
                             <Conversation conversation={c} currentUser={user}></Conversation>
                         </div>    
                     ))}
@@ -94,8 +130,9 @@ function Chats() {
                     {
                         currentChat ?
                         <>
+                    <ChatHeader name = {infoForHeader} ></ChatHeader>
                     <div className="chatBoxTop">
-                        <Message></Message>
+                    <Message></Message>
                         <Message own={true}></Message>
                         <Message></Message>
                         <Message own={true}></Message>
