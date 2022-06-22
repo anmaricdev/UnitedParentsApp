@@ -4,7 +4,7 @@ import "../pages/pages-css/Chats.css"
 import {Form} from 'react-bootstrap'
 import {useUserAuth} from "../context/UserAuthContext"
 import {getFirestore, Timestamp, addDoc, collection} from 'firebase/firestore';
-
+//Ante Maric(8, 22-34) & Eneas Harispe(11-21, 35-46 )
 const dbFS = getFirestore();
 
 function Settings() {
@@ -12,7 +12,6 @@ function Settings() {
     const student = userAuth.user.auth.currentUser
 
     //return <div> Test Page, see logs</div>
-
     const [error, setError] = useState("")
     const [sendMessage, setMess] = useState()
 
