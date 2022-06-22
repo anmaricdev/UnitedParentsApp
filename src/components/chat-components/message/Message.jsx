@@ -1,6 +1,8 @@
 //author Nora Kolasinac 1257519
 import React from "react";
 import "./Message.css"
+import dbFS from '../../../Firebase'
+import { collection, doc, setDoc } from "firebase/firestore"; 
 
 //Author: Ante Maric 1273904
 //Added current timestamp for sent chat messages
@@ -8,6 +10,7 @@ import "./Message.css"
 const date = new Date();
 const specificDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'}
 const localTime = date.toLocaleDateString('de-DE', specificDate);
+
 
 export default function Message({own}){
     return(

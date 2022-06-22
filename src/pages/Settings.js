@@ -34,13 +34,14 @@ function Settings() {
         e.preventDefault()
         setError("")
         try{
-            await addDoc(collection(dbFS, "messages"), {
+            const newMessageRef = await addDoc(collection(dbFS, "messages"), {
                  text: sendMessage,
                  createdAt: Timestamp.fromDate(new Date()),
                  username: student.displayName,
                  userID: student.uid
                });
             console.log(sendMessage)
+            console.log("Current message written with ID: ", newMessageRef.id);
             //navigate("/home")
     
         }catch(err){
