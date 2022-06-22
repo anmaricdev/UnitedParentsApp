@@ -1,21 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "../pages/pages-css/Chats.css"
 
-import {Form, Button, Card, Alert} from 'react-bootstrap'
+import {Form} from 'react-bootstrap'
 import {useUserAuth} from "../context/UserAuthContext"
-import {getFirestore, setDoc, doc, Timestamp, documentId, addDoc, collection} from 'firebase/firestore';
+import {getFirestore, Timestamp, addDoc, collection} from 'firebase/firestore';
 
 const dbFS = getFirestore();
-
-const date = new Date();
 
 function Settings() {
     const userAuth = useUserAuth()
     const student = userAuth.user.auth.currentUser
-
-    const randomId = (Date.now()).toString
-
-
 
     //return <div> Test Page, see logs</div>
 
@@ -34,7 +28,6 @@ function Settings() {
                });
             console.log(sendMessage)
             console.log("Current message written with ID: ", newMessageRef.id);
-            //navigate("/home")
         }catch(err){
             setError(err.message);
         }

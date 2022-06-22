@@ -1,15 +1,10 @@
 import React from "react";
 //import React, {useState} from "react";
-import {getAuth} from "firebase/auth";
-import {Form, Button, Card, Alert} from 'react-bootstrap'
-import{Link,useNavigate} from 'react-router-dom'
+import {Card} from 'react-bootstrap'
 import {useUserAuth} from "../context/UserAuthContext"
-import {getDatabase, ref, get, child, onValue} from "firebase/database";
-import {getFirestore} from 'firebase/firestore';
+import {getDatabase, ref,  onValue} from "firebase/database";
 
 const db = getDatabase();
-const dbFS = getFirestore();
-const auth = getAuth()
 
 var studentName;
 
