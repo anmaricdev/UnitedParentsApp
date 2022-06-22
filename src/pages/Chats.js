@@ -1,4 +1,3 @@
-//Author Nora Kolasinac 1257519 - UI
 import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
@@ -7,18 +6,19 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { auth } from "../Firebase";
 import ChatHeader from "../components/chat-components/chat-header/chat-header";
 import "../pages/pages-css/Chats.css"
-
+import { dbFS } from "../Firebase";
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 //import {PostMessage} from "../components/SendMessage.js"
 import {getFirestore, setDoc, doc, Timestamp, documentId, addDoc, collection} from 'firebase/firestore';
 
-const dbFS = getFirestore();
 
-
+//Author Nora Kolasinac 1257519 - Front-End
+//Author Ante Maric 1273904 & Eneas Harispe 1384848 - Back-End
 function Chats() {
-
+    // Eneas Harispe
     const userAuth = useUserAuth()
     const student = userAuth.user.auth.currentUser
+    //Nora Kolasinac
     // const [user, setUser] = useState(null)
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([])
@@ -92,6 +92,7 @@ function Chats() {
 
       const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
 
+    //Ante Maric(100-105,107) & Eneas Harispe(96-99,106,108-113)
     const handleMessage = async (e) =>{
         e.preventDefault()
         //setError("")
@@ -110,7 +111,7 @@ function Chats() {
            // setError(err.message);
         }
     }
-     
+    //Nora Kolasinac
     return (
         <>
         <div className="messenger">
