@@ -5,26 +5,24 @@ import Conversation from "../components/chat-components/conversations/Conversati
 import Message from "../components/chat-components/message/Message";
 import {getDatabase, ref, get, onValue} from "firebase/database";
 import { useUserAuth } from "../context/UserAuthContext";
+import {dbFS, dbRT} from '../Firebase'
 import "../pages/pages-css/Chats.css"
 
-const db = getDatabase();
 const auth = getAuth()
 
 
 const student = auth.currentUser;
-var studentName;
 //PLEASE DONT CHANGE THIS CODE UNTIL I UNDERSTAND WHY IT WORKS
 function MyName(){
   if (student !== null){
-    return onValue(ref(db, '/users/' + student.uid + '/Username'), (snapshot) => {
-        studentName = (snapshot.val()) || 'Anonymous'; //.Username
+    return onValue(ref(dbRT, '/users/' + student.uid + '/Username'), (snapshot) => {
+        student.displayName = (snapshot.val()) || 'Anonymous'; //.Username
         console.log("snapshot is: ")
-        console.log(studentName)
+        console.log(student.displayName)
       }, {
         onlyOnce: true
       });
     }
-    
 }
 
 /*function getMyProfile (){
@@ -44,9 +42,15 @@ function MyName(){
 
 function Chats() {
     MyName();
+
     // const [user, setUser] = useState(null)
     const [currentChat, setCurrentChat] = useState(null);
-    const [messages, setMessages] = useState([])
+    /*const [messages, setMessages] = useState([])
+    useEffect(() => {
+        dbFS.collection('messages').orderBy('createdAt').limit(50).onSnapshot(snapshot => {
+            setMessages(snapshot.docs.map(doc => doc.data()))
+        })
+    }, [])*/
     const [conversations, setConversations] = useState([
         {
          'id': "2f898b4f-b684-4821-b46f-f0f7831c020a",
@@ -81,7 +85,7 @@ function Chats() {
        'updatedAt':"2022-05-15T10:22:22.262Z",
       }]); // Array conversations test - ersetzen durch getConversationsForuser() - Api Request
 
-      const user = {name: studentName, id: "id1"}; // ersetzen durch getmyProfile() api request
+      const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
 
     return (
         <>
