@@ -1,50 +1,12 @@
-//author Nora Kolasinac 1257519
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import React, { useContext, useEffect, useState } from "react";
 import Conversation from "../components/chat-components/conversations/Conversations";
 import Message from "../components/chat-components/message/Message";
-import {getDatabase, ref, get, onValue} from "firebase/database";
 import { useUserAuth } from "../context/UserAuthContext";
-import "../pages/pages-css/Chats.css";
-import ChatHeader from "../components/chat-components/chat-header/chat-header";
-
-const db = getDatabase();
-const auth = getAuth()
-
-
-const student = auth.currentUser;
-var studentName;
-//PLEASE DONT CHANGE THIS CODE UNTIL I UNDERSTAND WHY IT WORKS
-function MyName(){
-  if (student !== null){
-    return onValue(ref(db, '/users/' + student.uid + '/Username'), (snapshot) => {
-        studentName = (snapshot.val()) || 'Anonymous'; //.Username
-        console.log("snapshot is: ")
-        console.log(studentName)
-      }, {
-        onlyOnce: true
-      });
-    }
-    
-}
-
-/*function getMyProfile (){
-    const auth = getAuth();
-    const student = auth.currentUser;
-    if (student !== null){
-    const sid = student.uid
-    const refUsername = db.ref('users/' + sid + '/username');
-
-    refUsername.on('value', (snapshot) => {
-        console.log(snapshot.val());
-    }, (errorObject) => {
-        console.log('The read failed: ' + errorObject.name);
-    });
-    }
-}*/
+import { auth } from "../Firebase";
+import "../pages/pages-css/Chats.css"
 
 function Chats() {
-    MyName();
     // const [user, setUser] = useState(null)
     const [currentChat, setCurrentChat] = useState(null);
     const [messages, setMessages] = useState([])
@@ -82,53 +44,16 @@ function Chats() {
        'updatedAt':"2022-05-15T10:22:22.262Z",
       }]); // Array conversations test - ersetzen durch getConversationsForuser() - Api Request
 
-      const friendsForTest = [
-        {
-            createdAt: "2020-02-22T10:10:10.122Z",
-            email: "id2@gmail.com",
-            isAdmin: false,
-            profilePicture: "",
-            username: "id2 Jane Doe",
-            id: "id2"
-        },{
-            createdAt: "2020-02-22T10:10:10.122Z",
-            email: "id3@gmail.com",
-            isAdmin: false,
-            profilePicture: "",
-            username: "id3 John D.",
-            id: "id3"
-        },{
-            createdAt: "2020-02-22T10:10:10.122Z",
-            email: "id4@gmail.com",
-            isAdmin: false,
-            profilePicture: "",
-            username: "id4 Username",
-            id: "id4"
-        },{
-            createdAt: "2020-02-22T10:10:10.122Z",
-            email: "id5@gmail.com",
-            isAdmin: false,
-            profilePicture: "",
-            username: "id5 Username",
-            id: "id5"
-        },] // Array of users Tests // ersetzen durch getAllUsers() api Request;
-
-      const [infoForHeader, setInfoForHeader] = useState(null);
-      const user = {name: studentName, id: "id1"}; // ersetzen durch getmyProfile() api request
-      const childToParent = () => {
-        // eslint-disable-next-line no-const-assign
-        setCurrentChat(null);
-      }
+      const user = {name: "nora", id: "id1"}; // ersetzen durch getmyProfile() api request
 
     return (
         <>
         <div className="messenger">
             <div className="chatMenu">
                 <div className="chatMenuWrapper">
-                    <input disabled="true" placeholder="Chats" className="chatMenuInput" />
+                    <input placeholder="Search friends" className="chatMenuInput" />
                     {conversations.map(c => (
-                        <div onClick={() => {setCurrentChat(c); 
-                            setInfoForHeader(friendsForTest.find(f => f.id === c.members[1]).username)}}>
+                        <div onClick={() => setCurrentChat(c)}>
                             <Conversation conversation={c} currentUser={user}></Conversation>
                         </div>    
                     ))}
@@ -139,31 +64,24 @@ function Chats() {
                     {
                         currentChat ?
                         <>
-                     <ChatHeader name = {infoForHeader} childToParent = {childToParent}></ChatHeader>   
                     <div className="chatBoxTop">
                         <Message></Message>
                         <Message own={true}></Message>
                         <Message></Message>
                         <Message own={true}></Message>
                         <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
-                        <Message own={true}></Message>
-                        <Message></Message>
+                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message><Message></Message>
+                        <Message own={true}></Message><Message></Message>
                         <Message own={true}></Message>
                     </div>
                     <div className="chatBoxBottom">
                         <textarea 
                         className="chatMessageInput"
-                        placeholder="Write something.. !"
+                        placeholder="Ey write something.. !"
                         ></textarea>
                         <button className="chatSubmitButton"> Send</button>
                     </div> </> : <span className="noConversationText"> Open a conversation to start a chat.</span>}
@@ -173,6 +91,8 @@ function Chats() {
         </div>
         </>
     );
+
+    
 }
 
 export default Chats;
