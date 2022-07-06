@@ -128,10 +128,20 @@ home { text-align: center; }
   height: 100%;
 }
 /*Ante Maric 1273904*/
-.motivation h2{
+.motivation h2 {
   text-align: center;
   font-style: italic;
   font-size: 30px;
+}
+
+.sButton {
+  margin-top: 1mm;
+  width: 8%;
+}
+
+.eButton {
+  margin-right: 2mm;
+  width: 8%;
 }
 
 

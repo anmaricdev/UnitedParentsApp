@@ -17,7 +17,10 @@ function Home() {
             <div className="motivation">
                 <h2 id="motivationHeader">"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines
                     Körpers zu tragen."</h2>
+                    <input type="text" name="motivationHeader" id="motivationHeader" placeholder="Enter a new quote..."></input>
             </div>
+            <button className="eButton" id="editButton">Edit</button>
+            <button type="submit" className="sButton" id="saveButton">Save</button>
             </form>
 
             <div className="buttonsHeader" id="buttons">
@@ -37,6 +40,8 @@ function Home() {
                     Programm und Anmeldung <u>hier</u>.
                 </p>
             </div>
+            <button className="eButton" id="editButton">Edit</button>
+            <button type="submit" className="sButton" id="saveButton">Save</button>
 
             <div className="content-box home">
             <div className="uni-logo">
@@ -50,6 +55,8 @@ function Home() {
                     commodo elit at imperdiet dui.
                 </p>
             </div>
+            <button className="eButton" id="editButton">Edit</button>
+            <button type="submit" className="sButton" id="saveButton">Save</button>
         </div>
     );
 }
