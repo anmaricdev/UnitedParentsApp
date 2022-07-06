@@ -1,41 +1,55 @@
 import React from "react";
 
 function Home() {
+   /* function editContentBox(){
+        document.getElementById("motivationHeader").contentEditable = true;
+    }
+    
+    function saveContentBox(){
+        document.getElementById("motivationHeader").contentEditable = false;
+    }
+    <button onclick={editContentBox()}>Edit header</button>
+    <button onclick={saveContentBox()}>Save changes</button>*/
+
     return (
         <div>
-            <div className="home-content1">
-                <h1>Content 1</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Fusce id velit ut tortor pretium. Mauris nunc congue nisi vitae suscipit. Integer eget aliquet nibh praesent. Ipsum dolor sit amet consectetur.
-                Nec ullamcorper sit amet risus. Ut ornare lectus sit amet est placerat in egestas erat. Egestas egestas fringilla phasellus faucibus scelerisque
-                eleifend donec. Nulla pharetra diam sit amet. Vestibulum lectus mauris ultrices eros in cursus turpis. Cras tincidunt lobortis feugiat vivamus
-                at augue eget arcu. Lobortis feugiat vivamus at augue eget arcu dictum. Egestas congue quisque egestas diam. Dolor sit amet consectetur
-                adipiscing elit pellentesque habitant morbi tristique. Lobortis feugiat vivamus at augue eget arcu dictum. Adipiscing elit pellentesque habitant
-                morbi tristique senectus et netus. Aenean sed adipiscing diam donec adipiscing tristique. Pretium vulputate sapien nec sagittis aliquam malesuada.
+            <form>
+            <div className="motivation">
+                <h2 id="motivationHeader">"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines
+                    Körpers zu tragen."</h2>
+            </div>
+            </form>
+
+            <div className="buttonsHeader" id="buttons">
+                
+            </div>
+
+            <div className="content-box home">
+                <div className="uni-logo">
+                    <img src="./pictures/fra-uas-logo.png" alt="" className="logo-img"></img>
+                </div>
+                <h1>Osterferienbetreuung 2022</h1>
+                <p>vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
+                    Alter von 6 bis 12. Unter dem Motto: „Frankfurt durch die Kamera“ werden wir
+                    spannende Ausflüge machen, Frankfurt durch die Kamera in den Blick nehmen, einen
+                    Animationsfilm drehen und gemeinsam viel Spaß haben. Betreuungs-Zeitraum ist
+                    täglich von 08:30 Uhr bis 17:00 Uhr. Anmeldeschluss ist der 18.03.2022! Infos zu
+                    Programm und Anmeldung <u>hier</u>.
                 </p>
             </div>
 
-            <div className="home-content2">
-                <h1>Content 2</h1>
-                <p>Tincidunt dui ut ornare lectus sit amet. Placerat orci nulla pellentesque dignissim enim sit amet venenatis. Cras sed felis eget velit aliquet
-                sagittis id consectetur purus. Massa vitae tortor condimentum lacinia quis. Aenean pharetra magna ac placerat vestibulum lectus mauris ultrices eros.
-                Urna nec tincidunt praesent semper feugiat nibh.Molestie nunc non blandit massa enim nec dui.
-                Sit amet commodo nulla facilisi nullam vehicula ipsum a arcu. At varius vel pharetra vel turpis nunc. Phasellus faucibus scelerisque eleifend donec
-                pretium vulputate sapien nec. Scelerisque felis imperdiet proin fermentum leo vel orci. Nullam vehicula ipsum a arcu. Velit dignissim sodales
-                ut eu sem integer vitae justo eget.
-                </p>
-            </div>
-
-            <div className="home-content3">
+            <div className="content-box home">
+            <div className="uni-logo">
+                    <img src="./pictures/fra-uas-logo.png" alt="" className="logo-img"></img>
+                </div>
                 <h1>Content 3</h1>
-                <p>Dui id ornare arcu odio. Pulvinar elementum integer enim neque volutpat. Sit amet mattis vulputate enim nulla aliquet porttitor lacus.
-                Dictum fusce ut placerat orci. Quis lectus nulla at volutpat diam ut venenatis. Id faucibus nisl tincidunt eget. Id aliquet risus feugiat
-                in ante. Pellentesque adipiscing commodo elit at imperdiet dui. Nam at lectus urna duis convallis. Netus et malesuada fames ac turpis
-                egestas sed. Volutpat est velit egestas dui id ornare. Risus pretium quam vulputate dignissim suspendisse in est ante.
-                At tellus at urna condimentum mattis pellentesque id nibh tortor.
+                <p>Dui id ornare arcu odio. Pulvinar elementum integer enim neque volutpat. Sit
+                    amet mattis vulputate enim nulla aliquet porttitor lacus. Dictum fusce ut
+                    placerat orci. Quis lectus nulla at volutpat diam ut venenatis. Id faucibus nisl
+                    tincidunt eget. Id aliquet risus feugiat in ante. Pellentesque adipiscing
+                    commodo elit at imperdiet dui.
                 </p>
             </div>
-
         </div>
     );
 }

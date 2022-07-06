@@ -108,23 +108,32 @@ a.forgot-password { font-size: 15px; }
 .w-100.text-center.mt-2 { margin-bottom: 20px; }
 
 /* ---------- Home Content ---------- */
-.home-content1,
-.home-content2,
-.home-content3 {
-  width: 75vw;
-  padding: 18px 40px 18px 40px;
-  margin-bottom: 60px;
-    
-  background-color: #fdfdfc;
-  border-radius: 8px;
-  border: solid #489FB5 2px;
-}    
-.home-content1 p,
-.home-content2 p,
-.home-content3 p {
-  margin-top: 18px;
+home { text-align: center; }
+.home p {
+  margin-top: 20px;
   line-height: 1.5;
+  text-align: left;
 }
+
+.uni-logo {
+  margin-top: 30px; /*Ante Maric 1273904*/
+  height: 110px;
+  width: 210px;
+  display: inline-flex;
+}
+
+.logo-img {
+  margin-bottom: 20xp;
+  width: 100%;
+  height: 100%;
+}
+/*Ante Maric 1273904*/
+.motivation h2{
+  text-align: center;
+  font-style: italic;
+  font-size: 30px;
+}
+
 
 /* ---------- Search User Content ---------- */
 /* Hide Spinners from Number input */
@@ -276,6 +285,12 @@ header {
   .card h1 { font-size: 24px; }
 
 
+}
+/* Home Content */
+.uni-logo {
+  height: 60px;
+  width: 160px;
+  margin-bottom: 12px;
 }
 
 
