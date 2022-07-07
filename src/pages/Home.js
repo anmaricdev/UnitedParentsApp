@@ -1,6 +1,8 @@
 import React from "react";
 import {card} from "react-bootstrap"
 
+
+//Author: Ante Maric 1273904
 function Home() {
    /* function editContentBox(){
         document.getElementById("motivationHeader").contentEditable = true;
@@ -16,7 +18,8 @@ function Home() {
     */
 
     return (
-        <><div class="card p-3 text-left">
+        <div>
+        <div class="card p-3 text-left">
             <blockquote class="blockquote mb-0 card-body">
                 <h2>"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines Körpers zu tragen."</h2>
                 <footer class="blockquote-footer">
@@ -26,12 +29,11 @@ function Home() {
                 </footer>
             </blockquote>
             <button className="eButton" id="editButton">Edit</button>
-            <button className="sButton" id="saveButton">Save</button>
+            <button type="submit" className="sButton" id="saveButton">Save</button>
         </div>
         
         <br></br>
-        
-            <div>
+
                 <div class="card">
                     <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="300" length="100" position="text-center"></img>
                     <div class="card-body">
@@ -46,6 +48,8 @@ function Home() {
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
+                    <button className="eButton" id="editButton">Edit</button>
+                    <button type="submit" className="sButton" id="saveButton">Save</button>
                 </div>
 
                 <br></br>
@@ -64,11 +68,12 @@ function Home() {
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
+                    <button className="eButton" id="editButton">Edit</button>
+                    <button type="submit" className="sButton" id="saveButton">Save</button>
                 </div>
-                
-                <br></br>
 
-            </div></>
+                <br></br>
+            </div>
     );
 }
 

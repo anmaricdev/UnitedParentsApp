@@ -139,6 +139,8 @@ home { text-align: center; }
   margin-left: 2cm;
   width: 10%;
   align-self: center;
+  position: relative;
+  top: 0.1mm;
 }
 
 .eButton {
