@@ -38,7 +38,7 @@ function Home() {
         <br></br>
 
                 <div class="card">
-                    <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="300" length="100" position="text-center"></img>
+                    <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="200" length="100" position="text-center"></img>
                     <div class="card-body">
                         <h1 class="card-title">Osterferienbetreuung 2022</h1>
                         <p class="card-text">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
@@ -58,7 +58,7 @@ function Home() {
                 <br></br>
 
                 <div class="card">
-                    <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="300" length="100" position="text-center"></img>
+                    <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="200" length="100" position="text-center"></img>
                     <div class="card-body">
                         <h1 class="card-title">Osterferienbetreuung 2022</h1>
                         <p class="card-text">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
