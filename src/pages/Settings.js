@@ -28,7 +28,7 @@ function Settings() {
             console.log(sendMessage)
             console.log("Current message written with ID: ", newMessageRef.id);
         }catch(err){
-            setError(err.message);
+            alert(err)
         }
     }
     

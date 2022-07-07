@@ -108,7 +108,7 @@ function Chats() {
             //navigate("/home")
     
         }catch(err){
-           // setError(err.message);
+         alert(err)
         }
     }
     //Nora Kolasinac
