@@ -1,6 +1,7 @@
 import React from "react";
 import {card} from "react-bootstrap"
 
+//TODO: figure out how to make the cards not float above header while scrolling down
 
 //Author: Ante Maric 1273904
 function Home() {
@@ -19,9 +20,11 @@ function Home() {
 
     return (
         <div>
-        <div class="card p-3 text-left">
+        <div class="card p-3 text-center">
             <blockquote class="blockquote mb-0 card-body">
-                <h2>"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines Körpers zu tragen."</h2>
+                <h1>Zitat des Tages:</h1>
+                    <br></br>
+                <h2 ><em>"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines Körpers zu tragen."</em>"</h2>
                 <footer class="blockquote-footer">
                     <h4 class="text-muted">
                         - Unbekannter Autor <cite title="Source Title"></cite>
