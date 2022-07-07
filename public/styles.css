@@ -135,13 +135,18 @@ home { text-align: center; }
 }
 
 .sButton {
-  margin-top: 1mm;
-  width: 8%;
+  margin-top: 0.3mm;
+  margin-left: 2cm;
+  width: 10%;
+  align-self: center;
 }
 
 .eButton {
-  margin-right: 2mm;
-  width: 8%;
+  margin-right: 2cm;
+  width: 10%;
+  align-self: center;
+  position: relative;
+  top: 1cm;
 }
 
 
