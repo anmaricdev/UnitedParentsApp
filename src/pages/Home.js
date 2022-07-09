@@ -19,7 +19,7 @@ function Home() {
     */
 
     return (
-        <div>
+        <div className="adminBoxes">
         <div class="card p-3 text-center">
             <blockquote class="blockquote mb-0 card-body">
                 <h1>Zitat des Tages:</h1>

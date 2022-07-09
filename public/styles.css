@@ -151,6 +151,13 @@ home { text-align: center; }
   top: 1cm;
 }
 
+.adminBoxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: inherit;
+}
+
 
 /* ---------- Search User Content ---------- */
 /* Hide Spinners from Number input */
@@ -205,6 +212,8 @@ header {
   position: fixed; /* fixed at the top when scrolling */
   top: 0;
   left: 0;
+
+  z-index: 99;
   
   height: 60px;
   width: 100%;
