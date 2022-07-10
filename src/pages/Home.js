@@ -6,26 +6,28 @@ import { useState } from "react";
 
 //Author: Ante Maric 1273904
 function Home() {
-   /* function editContentBox(){
-        document.getElementById("motivationHeader").contentEditable = true;
+
+   function editContentBox(){
+        document.getElementById("cardHeader").contentEditable = true;
+        document.getElementById("cardBody").contentEditable = true;
+        document.getElementById("quoteOfTheDay").contentEditable = true;
+        document.getElementById("authorQuote").contentEditable = true;
     }
     
     function saveContentBox(){
-        document.getElementById("motivationHeader").contentEditable = false;
+        document.getElementById("cardHeader").contentEditable = false;
+        document.getElementById("cardBody").contentEditable = false;
+        document.getElementById("quoteOfTheDay").contentEditable = false;
+        document.getElementById("authorQuote").contentEditable = false;
     }
-    <button onclick={editContentBox()}>Edit header</button>
-    <button onclick={saveContentBox()}>Save changes</button>
 
-    <input type="text" name="motivationHeader" id="motivationHeader" placeholder="Enter a new quote..."></input>
-    */
     const [{cards}, setCards] = useState({cards: []});
-
     const addCard = () => {
         cards.push(<div key={cards.length}><div className="card" id="cardAdmin">
         <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="200" length="100" position="text-center"></img>
         <div class="card-body">
-            <h1 class="card-title">Osterferienbetreuung 2022</h1>
-            <p class="card-text">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
+            <h1 class="card-title" id="cardHeader">Osterferienbetreuung 2022</h1>
+            <p class="card-text" id="cardBody">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
                 Alter von 6 bis 12. Unter dem Motto: „Frankfurt durch die Kamera“ werden wir
                 spannende Ausflüge machen, Frankfurt durch die Kamera in den Blick nehmen, einen
                 Animationsfilm drehen und gemeinsam viel Spaß haben. Betreuungs-Zeitraum ist
@@ -35,8 +37,8 @@ function Home() {
         <div class="card-footer">
             <small class="text-muted">Last updated 3 mins ago</small>
         </div>
-        <Button className="eButton" id="editButton">Edit</Button>
-        <Button type="submit" className="sButton" id="saveButton">Save</Button>
+        <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
+        <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
         <Button className="dButton" id="deleteButton">Delete</Button>
     </div><br></br></div>);
     
@@ -49,15 +51,15 @@ function Home() {
             <blockquote class="blockquote mb-0 card-body">
                 <h1>Zitat des Tages:</h1>
                     <br></br>
-                <h2 ><em>"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines Körpers zu tragen."</em>"</h2>
+                <h2 id="quoteOfTheDay"><em>"Ein Kind zu haben bedeutet immer, ein Stück seines Herzens außerhalb seines Körpers zu tragen."</em>"</h2>
                 <footer class="blockquote-footer">
-                    <h4 class="text-muted">
+                    <h4 class="text-muted" id="authorQuote">
                         - Unbekannter Autor <cite title="Source Title"></cite>
                     </h4>
                 </footer>
             </blockquote>
-            <Button className="eButton" id="editButton">Edit</Button>
-            <Button type="submit" className="sButton" id="saveButton">Save</Button>
+            <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
+            <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
             <Button className="dButton" id="deleteButton">Delete</Button>
         </div>
         
@@ -66,8 +68,8 @@ function Home() {
                 <div className="card" id="cardAdmin">
                     <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="200" length="100" position="text-center"></img>
                     <div class="card-body">
-                        <h1 class="card-title">Osterferienbetreuung 2022</h1>
-                        <p class="card-text">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
+                        <h1 class="card-title" id="cardHeader">Osterferienbetreuung 2022</h1>
+                        <p class="card-text" id="cardBody">vom 11.4.-22.4. an der Frankfurt University of Applied Science für Kinder im
                             Alter von 6 bis 12. Unter dem Motto: „Frankfurt durch die Kamera“ werden wir
                             spannende Ausflüge machen, Frankfurt durch die Kamera in den Blick nehmen, einen
                             Animationsfilm drehen und gemeinsam viel Spaß haben. Betreuungs-Zeitraum ist
@@ -77,8 +79,8 @@ function Home() {
                     <div class="card-footer">
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
-                    <Button className="eButton" id="editButton">Edit</Button>
-                    <Button type="submit" className="sButton" id="saveButton">Save</Button>
+                    <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
+                    <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
                     <Button className="dButton" id="deleteButton">Delete</Button>
                 </div>
 
