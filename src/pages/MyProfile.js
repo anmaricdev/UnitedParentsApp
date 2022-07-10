@@ -1,19 +1,24 @@
-//Ante Maric & Eneas Harispe
 import React from "react";
 //import React, {useState} from "react";
-import {Card} from 'react-bootstrap'
+import {getAuth} from "firebase/auth";
+import {Form, Button, Card, Alert} from 'react-bootstrap'
+import{Link,useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
-import {getDatabase, ref,  onValue} from "firebase/database";
-
-const db = getDatabase();
+import {getDatabase, ref, get, child, onValue} from "firebase/database";
+import {getFirestore} from 'firebase/firestore';
+import { dbFS, dbRT } from "../Firebase";
+//Eneas Harispe
+const auth = getAuth()
 
 var studentName;
-//Ante Maric(14,16-17) & Eneas Harispe(12,20-24)
+var mySnapshot = {};
+
+//Ante Maric(21-22) & Eneas Harispe(17-20,25-29)
 function MyName(student){
   
   if (student.displayName == null){ //if displayname is not already saved or was erased in the session
     // then ask again for it in db
-    return onValue(ref(db, '/users/' + student.uid + '/Username'), (snapshot) => {
+    return onValue(ref(dbRT, '/users/' + student.uid + '/Username'), (snapshot) => {
         studentName = (snapshot.val()) 
         //console.log("snapshot is: ")
         //console.log(studentName)
@@ -25,9 +30,16 @@ function MyName(student){
     
 }
 
+//Eneas Harispe
+function FsMessage() {
+  
+    
+      console.log("snap is:");
+      console.log(dbFS.collection());
+  
+}
 
-
-
+//Eneas Harispe
 function MyProfile() {
     console.log('start of reload')
     const userAuth = useUserAuth()
@@ -38,7 +50,7 @@ function MyProfile() {
     console.log("studentname is pls:");
     console.log(studentName);
 
-  
+    FsMessage();
 
     //console.log('userAuth is:');
     //console.log(userAuth);

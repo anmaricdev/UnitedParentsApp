@@ -22,7 +22,7 @@ const firebaseConfig = { //TUT:at some point, we'll need to save the keys and im
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 //Author Ante Maric - 1273904
-const dbFS = getFirestore(app)
+const dbFS = getFirestore(app);
 const dbRT = getDatabase(app);
 export const auth = getAuth(app);
 export {dbFS, dbRT}
