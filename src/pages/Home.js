@@ -1,11 +1,22 @@
 import React from "react";
 import { Button } from "react-bootstrap"
 import { useState } from "react";
+import { dbFS } from "../Firebase";
+import { Timestamp, collection, addDoc } from "firebase/firestore";
 
-//TODO: figure out how to make the cards not float above header while scrolling down
+//TODO: display the saved header and body from the database to the card properly everytime it reloads reload until deleted
+//It's working, just need to find out how to Load it after the DOM loaded
 
 //Author: Ante Maric 1273904
 function Home() {
+    /*
+    const headerID = document.getElementById("newHeader");
+    const bodyID = document.getElementById("newBody");
+
+    const header = headerID.textContent.trim();
+    const body = bodyID.textContent.trim();
+    
+
 
    function editContentBox(){
         document.getElementById("cardHeader").setAttribute('contenteditable', 'true')
@@ -35,20 +46,48 @@ function Home() {
         }
     }
 
+    const [sendData, setData] = useState({
+        sendBody: body,
+        sendHeader: header
+    });
+    
+    const handleData = async (e) =>{
+        e.preventDefault()
+        //if(document.getElementById("createBtn").clicked == true){
+        try{
+            setData( prevValues => {
+                return { ...prevValues,[e.target.name]: e.target.value}
+                }
+             )
+            const cardDataRef = await addDoc(collection(dbFS, "admin"), {
+                 body: sendData.sendBody,
+                 header: sendData.sendHeader,
+                 updatedAt: Timestamp.fromDate(new Date())
+               });
+            console.log("Header: ", sendData.sendHeader)
+            console.log("Body: " , sendData.sendBody)
+            console.log("ID of current card update: ", cardDataRef.id);
+        }catch(err){
+            alert(err)
+        }
+    //}
+}
+
     const [{cards}, setCards] = useState({cards: []});
     const addCard = () => {
         cards.push(<div key={cards.length}><div className="card" id="cardAdmin">
         <img class="mx-auto" src="./pictures/fra-uas-logo.png" alt="" width="200" length="100" position="text-center"></img>
         <div class="card-body">
-            <h1 class="card-title" id="newHeader">Geben Sie hier eine Überschrift ein</h1>
-            <p class="card-text" id="newBody">Geben Sie hier Ihren Text ein</p>
+            <h1 class="card-title" id="newHeader" onClick={(e)=> setData(e.target.value)}>Geben Sie hier eine Überschrift ein</h1>
+            <p class="card-text" id="newBody" onClick={(e)=> setData(e.target.value)}>Geben Sie hier Ihren Text ein</p>
         </div>
         <div class="card-footer">
             <small class="text-muted">Last updated 3 mins ago</small>
         </div>
         <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
-        <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
+        <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()} >Save</Button>
         <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
+        <Button className="submitButton" id="testButton" onClick={handleData}>Publish</Button>
     </div><br></br></div>);
     
         setCards({cards: [...cards]});
@@ -102,6 +141,7 @@ function Home() {
 
             </div>
     );
+    */
+   return null
 }
-
 export default Home;

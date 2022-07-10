@@ -146,10 +146,10 @@ home { text-align: center; }
 /*-- Ante Maric 1273904 --*/
 .dButton {
   background-color: #DF362D !important;
-  margin-top: 0.3mm;
   width: 10%;
   align-self:flex-end;
   position: relative;
+  vertical-align: middle;
 }
 
 /*-- Ante Maric 1273904 --*/
@@ -167,6 +167,15 @@ home { text-align: center; }
   display: flex;
   width: 15%;
   align-self: center;
+}
+
+/*-- Ante Maric 1273904 --*/
+.submitButton {
+  background-color: green !important;
+  width: 10%;
+  align-self: flex-start;
+  position: relative;
+  vertical-align: middle;
 }
 
 /*-- Ante Maric 1273904 --*/
