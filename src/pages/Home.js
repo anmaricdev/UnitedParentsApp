@@ -25,6 +25,16 @@ function Home() {
         document.getElementById("newBody").setAttribute('contenteditable', 'false')
     }
 
+    function deleteContentBox(){
+        var deleteBtn = document.getElementsByClassName("dButton");
+        for (var i = 0; i < deleteBtn.length; i++) {
+            deleteBtn[i].addEventListener('click', function (e) {
+                e.preventDefault();
+                e.target.closest('div').remove();
+            });
+        }
+    }
+
     const [{cards}, setCards] = useState({cards: []});
     const addCard = () => {
         cards.push(<div key={cards.length}><div className="card" id="cardAdmin">
@@ -38,7 +48,7 @@ function Home() {
         </div>
         <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
         <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
-        <Button className="dButton" id="deleteButton">Delete</Button>
+        <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
     </div><br></br></div>);
     
         setCards({cards: [...cards]});
@@ -59,7 +69,7 @@ function Home() {
             </blockquote>
             <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
             <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
-            <Button className="dButton" id="deleteButton">Delete</Button>
+            <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
         </div>
         
         <br></br>
@@ -80,7 +90,7 @@ function Home() {
                     </div>
                     <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
                     <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
-                    <Button className="dButton" id="deleteButton">Delete</Button>
+                    <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
                 </div>
 
                 <br></br>
