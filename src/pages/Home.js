@@ -6,18 +6,20 @@ import { Timestamp, collection, addDoc } from "firebase/firestore";
 
 //TODO: display the saved header and body from the database to the card properly everytime it reloads reload until deleted
 //It's working, just need to find out how to Load it after the DOM loaded
+//MAIN ERROR: "Uncaught TypeError: Cannot read property 'textContent' of null error"
 
 //Author: Ante Maric 1273904
 function Home() {
-    /*
-    const headerID = document.getElementById("newHeader");
-    const bodyID = document.getElementById("newBody");
-
-    const header = headerID.textContent.trim();
-    const body = bodyID.textContent.trim();
     
+    var headerID = document.getElementById("newHeader")
+    var bodyID = document.getElementById("newBody")
 
+    var header = headerID?.textContent.trim() || headerID?.innerHTML.trim();
+    var body = bodyID?.textContent.trim() || headerID?.innerHTML.trim();
 
+    console.log(header);
+    console.log(body);
+    
    function editContentBox(){
         document.getElementById("cardHeader").setAttribute('contenteditable', 'true')
         document.getElementById("cardBody").setAttribute('contenteditable', 'true')
@@ -53,7 +55,6 @@ function Home() {
     
     const handleData = async (e) =>{
         e.preventDefault()
-        //if(document.getElementById("createBtn").clicked == true){
         try{
             setData( prevValues => {
                 return { ...prevValues,[e.target.name]: e.target.value}
@@ -70,7 +71,6 @@ function Home() {
         }catch(err){
             alert(err)
         }
-    //}
 }
 
     const [{cards}, setCards] = useState({cards: []});
@@ -85,11 +85,10 @@ function Home() {
             <small class="text-muted">Last updated 3 mins ago</small>
         </div>
         <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
-        <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()} >Save</Button>
+        <Button className="sButton" id="saveButton" onClick={() => saveContentBox()} >Save</Button>
         <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
-        <Button className="submitButton" id="testButton" onClick={handleData}>Publish</Button>
+        <Button className="submitButton" id="publishButton" onClick={handleData}>Publish</Button>
     </div><br></br></div>);
-    
         setCards({cards: [...cards]});
     };
 
@@ -107,7 +106,7 @@ function Home() {
                 </footer>
             </blockquote>
             <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
-            <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
+            <Button className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
             <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
         </div>
         
@@ -128,7 +127,7 @@ function Home() {
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                     <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
-                    <Button type="submit" className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
+                    <Button className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
                     <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
                 </div>
 
@@ -141,7 +140,5 @@ function Home() {
 
             </div>
     );
-    */
-   return null
 }
 export default Home;
