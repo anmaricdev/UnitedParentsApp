@@ -8,7 +8,7 @@ import {getAuth} from "firebase/auth";
 import { dbRT } from "../Firebase";
 import { get, child, onValue, ref } from "firebase/database";
 
-var isAdmin = true;
+var isAdmin;
 
 /** 
  * TODO:
