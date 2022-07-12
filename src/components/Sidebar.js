@@ -1,22 +1,31 @@
+import { UserIsAdmin, isAdmin } from "../pages/Login";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
-import {isAdmin} from "../pages/Login";
+
 
 
 function Sidebar() {
   
 
   const navigate = useNavigate();
+  console.log("did u see that")
+  var admin;
+
 
   const signout = () => {
+    
     auth.signOut();
     navigate("/");
   };
 
+  console.log("sidebar fun admin is: " + isAdmin)
+  UserIsAdmin();
   if(isAdmin == true){
-
+    //admin = UserIsAdmin
+    console.log("if admin is: " + admin)
     return (
+     
       <aside className="sidebar">
         <div className="icons">
           <div className="icons-container">
@@ -43,7 +52,7 @@ function Sidebar() {
       </aside>
     );
 
-  }else{
+  }else if(isAdmin == false){
 
     return (
       <aside className="sidebar">
@@ -99,6 +108,20 @@ function Sidebar() {
         </div>
       </aside>
     );
+  }else{
+    return (
+      <aside className="sidebar">
+        <div className="icons">
+          <div className="icons-container">
+            <a href="#" onClick={signout}>
+              <span className="material-icons">logout</span>
+              <p>Abmelden</p>
+            </a>
+          </div>
+        </div>
+      </aside>
+    );
+    
   }
   
 }

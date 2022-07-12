@@ -8,7 +8,7 @@ import {getAuth} from "firebase/auth";
 import { dbRT } from "../Firebase";
 import { get, child, onValue, ref } from "firebase/database";
 
-var isAdmin;
+var isAdmin = null;
 
 /** 
  * TODO:
@@ -16,7 +16,8 @@ var isAdmin;
 */ 
 
 //this fun is in login so we can properly save it before using the value for the sidebar
-function UserIsAdmin(){
+export function UserIsAdmin(){
+    var admin;
     const auth = getAuth()
     const userId = auth.currentUser.uid;
     console.log("student is:"+ userId)
@@ -26,14 +27,14 @@ function UserIsAdmin(){
     
     //console.log("student is:"+ userId)
 
-    return onValue(ref(dbRT, '/users/' + userId + '/isAdmin'), (snapshot) => {
+   return onValue(ref(dbRT, '/users/' + userId + '/isAdmin'), (snapshot) => {
         isAdmin = (snapshot.val()) 
-        console.log(snapshot.val());
-        }, {
-        onlyOnce: true
-        });
+        admin = isAdmin
         console.log("after function user is admin:" + isAdmin)
+        });
+   
   }
+
 function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -49,7 +50,8 @@ function Login() {
         try{
             await login(email,password)
             UserIsAdmin()
-            navigate("/home")
+            setTimeout(() => { navigate("/home"); }, 500);
+            
     
         }catch(err){
             setError(err.message);
