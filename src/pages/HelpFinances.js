@@ -3,7 +3,7 @@ import { useUserAuth } from "../context/UserAuthContext";
 import { getFirestore, collection, query, where, onSnapshot } from "firebase/firestore";
 import "../pages/pages-css/Chats.css"
 import ChatHeader from "../components/chat-components/chat-header/chat-header";
-// Author: Eneas Harispe[Lines 9-41]
+// Author: Eneas Harispe 1384848  [Lines 9-41]
 const fs = getFirestore();
 
 const Help = () => {

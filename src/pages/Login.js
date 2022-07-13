@@ -16,7 +16,7 @@ var isAdmin;
 */ 
 
 //this fun is in login so we can properly save it before using the value for the sidebar
-// Author: Eneas Harispe[Lines 20 -31] [11,47,48,88]
+// Author: Eneas Harispe 1384848 [Lines 20 -31] [11,47,48,88]
 export function UserIsAdmin(){
     var admin;
     const auth = getAuth()

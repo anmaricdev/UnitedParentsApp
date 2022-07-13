@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 
 
-// Author: Eneas Harispe [Lines 10, 19-118 if else clauses]
+// Author: Eneas Harispe1384848  [Lines 10, 19-118 if else clauses]
 function Sidebar() {
   
   UserIsAdmin();

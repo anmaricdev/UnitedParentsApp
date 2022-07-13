@@ -22,7 +22,7 @@ const db = getDatabase();
 const fs = getFirestore();
 
 
-// Authors: Ante Maric (1273904) [Lines 23 - 28] & Eneas [Lines 29 - 31]
+// Authors: Ante Maric (1273904) [Lines 23 - 28] & Eneas 1384848 [Lines 29 - 31]
 // after a successful registration, the username entered is saved in the database under the user which is 
 // identified via the student(user)id
 function writeUserData(username, email){
