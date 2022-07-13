@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap"
 import { useState } from "react";
 import { dbFS } from "../Firebase";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
+import { isAdmin } from "./Login";
 
 //TODO: display the saved header and body from the database to the card properly everytime it reloads reload until deleted
 //It's working, just need to find out how to Load it after the DOM loaded
@@ -71,7 +72,7 @@ function Home() {
         }catch(err){
             alert(err)
         }
-}
+    }
 
     const [{cards}, setCards] = useState({cards: []});
     const addCard = () => {
@@ -82,7 +83,7 @@ function Home() {
             <p class="card-text" id="newBody" onClick={(e)=> setData(e.target.value)}>Geben Sie hier Ihren Text ein</p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+            <small class="text-muted">Zuletzt aktualisiert: {localTime}</small>
         </div>
         <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
         <Button className="sButton" id="saveButton" onClick={() => saveContentBox()} >Save</Button>
@@ -91,6 +92,28 @@ function Home() {
     </div><br></br></div>);
         setCards({cards: [...cards]});
     };
+
+    // Time stamp that shows the user when the admin last updated the content, should be then replaced with the 
+    // created At timestamp from the database when it has been published
+    const date = new Date();
+    const specificDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'}
+    const localTime = date.toLocaleDateString('de-DE', specificDate);
+
+    // Sets the visibility of the buttons to hidden if the user is not an admin
+    // https://www.w3schools.com/jsref/prop_style_display.asp
+    /*
+    if(isAdmin === true){
+        document.getElementById("editButton").style.display = "block";
+        document.getElementById("saveButton").style.display = "block";
+        document.getElementById("deleteButton").style.display = "block";
+        document.getElementById("createBtn").style.display = "block";
+    }
+    else{
+        document.getElementById("editButton").style.display = "none";
+        document.getElementById("saveButton").style.display = "none";
+        document.getElementById("deleteButton").style.display = "none";
+        document.getElementById("createBtn").style.display = "none";
+    }*/
 
     return (
         <div className="adminBoxes">
@@ -108,6 +131,7 @@ function Home() {
             <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
             <Button className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
             <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
+            <Button className="submitButton" id="publishButton" onClick={handleData}>Publish</Button>
         </div>
         
         <br></br>
@@ -124,11 +148,12 @@ function Home() {
                             Programm und Anmeldung <u>hier</u>.</p>
                     </div>
                     <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
+                        <small class="text-muted">Zuletzt aktualisiert: {localTime}</small>
                     </div>
                     <Button className="eButton" id="editButton" onClick={() => editContentBox()}>Edit</Button>
                     <Button className="sButton" id="saveButton" onClick={() => saveContentBox()}>Save</Button>
                     <Button className="dButton" id="deleteButton" onClick={() => deleteContentBox()}>Delete</Button>
+                    <Button className="submitButton" id="publishButton" onClick={handleData}>Publish</Button>
                 </div>
 
                 <br></br>
