@@ -6,6 +6,9 @@ import{Link,useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
 import {getDatabase, ref, set} from "firebase/database";
 import {getAuth} from "firebase/auth";
+import {setDoc, doc, getFirestore} from "firebase/firestore";
+import {dbFS} from "../Firebase";
+
 
 const Registration=()=> {
 const [email, setEmail] = useState("") //TUT:this hook keeps a state of a var you can dynamically update w/ setState
@@ -16,6 +19,8 @@ const {register} = useUserAuth()
 const [error, setError] = useState("")
 const navigate = useNavigate()
 const db = getDatabase();
+const fs = getFirestore();
+
 
 // Authors: Ante Maric (1273904) [Lines 23 - 28] & Eneas [Lines 29 - 31]
 // after a successful registration, the username entered is saved in the database under the user which is 
@@ -31,6 +36,19 @@ function writeUserData(username, email){
         //console.log('The displayname is: ' + student.displayName);
     }
 }
+
+function writeUserFirestore(username, email){
+    const auth = getAuth()
+    const student = auth.currentUser;
+    if (student !== null){
+        setDoc(doc(fs, 'users', student.uid),{
+            uid: student.uid,
+            username: username,
+            email: email,
+            isAdmin: false
+        });
+    }
+}
         
 const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -42,6 +60,7 @@ const handleSubmit = async (e) =>{
             await register(email,password)
             //console.log("the confirmation pass is: " + repeatPassword);
             writeUserData(username, email)
+            writeUserFirestore(username,email)
             navigate("/")
         }else alert("Your passwords do not match!");
         

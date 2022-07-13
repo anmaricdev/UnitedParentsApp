@@ -7,7 +7,7 @@ import { auth } from "../Firebase";
 
 function Sidebar() {
   
-
+  UserIsAdmin();
   const navigate = useNavigate();
   console.log("did u see that")
   var admin;
@@ -20,7 +20,7 @@ function Sidebar() {
   };
 
   console.log("sidebar fun admin is: " + isAdmin)
-  UserIsAdmin()
+  
   if(isAdmin === true){
     //admin = UserIsAdmin
     console.log("if admin is: " + isAdmin)
@@ -115,7 +115,7 @@ function Sidebar() {
           <div className="icons-container">
             <a href="#" onClick={signout}>
               <span className="material-icons">logout</span>
-              <p>Abmelden</p>
+              <p>Abmelden. Try login again</p>
             </a>
           </div>
         </div>
