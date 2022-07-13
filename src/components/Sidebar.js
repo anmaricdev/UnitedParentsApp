@@ -4,14 +4,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 
 
-
+// Author: Eneas Harispe [Lines 10, 19-118 if else clauses]
 function Sidebar() {
   
   UserIsAdmin();
   const navigate = useNavigate();
-  console.log("did u see that")
-  var admin;
-
 
   const signout = () => {
     
@@ -19,11 +16,7 @@ function Sidebar() {
     navigate("/");
   };
 
-  console.log("sidebar fun admin is: " + isAdmin)
-  
   if(isAdmin === true){
-    //admin = UserIsAdmin
-    console.log("if admin is: " + isAdmin)
     return (
      
       <aside className="sidebar">

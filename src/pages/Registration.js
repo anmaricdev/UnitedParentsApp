@@ -37,6 +37,7 @@ function writeUserData(username, email){
     }
 }
 
+// Author: Eneas Harispe[Lines 41-52]
 function writeUserFirestore(username, email){
     const auth = getAuth()
     const student = auth.currentUser;

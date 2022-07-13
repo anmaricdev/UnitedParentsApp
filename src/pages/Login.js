@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import {Form, Button, Card, Alert} from 'react-bootstrap'
 import{Link, useNavigate} from 'react-router-dom'
 import {useUserAuth} from "../context/UserAuthContext"
@@ -6,7 +6,7 @@ import {useUserAuth} from "../context/UserAuthContext"
 import {getAuth} from "firebase/auth";
 
 import { dbRT } from "../Firebase";
-import { get, child, onValue, ref } from "firebase/database";
+import {onValue, ref } from "firebase/database";
 
 var isAdmin;
 
@@ -16,17 +16,12 @@ var isAdmin;
 */ 
 
 //this fun is in login so we can properly save it before using the value for the sidebar
+// Author: Eneas Harispe[Lines 20 -31] [11,47,48,88]
 export function UserIsAdmin(){
     var admin;
     const auth = getAuth()
     const userId = auth.currentUser.uid;
     console.log("student is:"+ userId)
-    //const userAuth = useUserAuth()
-    //const student = userAuth.user.auth.currentUser
-    
-    
-    //console.log("student is:"+ userId)
-
    return onValue(ref(dbRT, '/users/' + userId + '/isAdmin'), (snapshot) => {
         isAdmin = (snapshot.val()) 
         admin = isAdmin
@@ -50,7 +45,7 @@ function Login() {
         try{
             await login(email,password)
             UserIsAdmin()
-            setTimeout(() => { navigate("/home"); }, 500); //hahahaha setting a timer works lol
+            setTimeout(() => { navigate("/home"); }, 500); 
             
     
         }catch(err){
