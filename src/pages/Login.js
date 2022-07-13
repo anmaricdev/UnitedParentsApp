@@ -50,7 +50,7 @@ function Login() {
         try{
             await login(email,password)
             UserIsAdmin()
-            setTimeout(() => { navigate("/home"); }, 500);
+            setTimeout(() => { navigate("/home"); }, 400); //hahahaha setting a timer works lol
             
     
         }catch(err){
