@@ -26,7 +26,7 @@ function Settings() {
     const [sendMessage, setMess] = useState()
 
     /*
-    //Ante Maric(38-43,45) & Eneas Harispe(34-37,44,46-51)
+    //Ante Maric(34-41) & Eneas Harispe(30-33, 42-48)
     const handleMessage = async (e) =>{
         e.preventDefault()
         setError("")
@@ -48,7 +48,7 @@ function Settings() {
     */
 
     
-    //Ante Maric
+    //Ante Maric - 1273904
     const getMessage = async (e) =>{
         e.preventDefault()
         setError("")
@@ -67,7 +67,7 @@ function Settings() {
 
     }
     
-    //Eneas Harispe & Ante Maric
+    //Eneas Harispe & Ante Maric 1273904
     return (
         <div>
         <div>
