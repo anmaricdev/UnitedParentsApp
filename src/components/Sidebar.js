@@ -21,7 +21,7 @@ function Sidebar() {
 
   console.log("sidebar fun admin is: " + isAdmin)
   //UserIsAdmin();
-  if(isAdmin == true){
+  if(isAdmin === true){
     //admin = UserIsAdmin
     console.log("if admin is: " + isAdmin)
     return (
@@ -52,7 +52,7 @@ function Sidebar() {
       </aside>
     );
 
-  }else if(isAdmin == false){
+  }else if(isAdmin === false){
 
     return (
       <aside className="sidebar">
