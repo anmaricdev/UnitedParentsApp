@@ -8,7 +8,7 @@ import {getAuth} from "firebase/auth";
 import { dbRT } from "../Firebase";
 import { get, child, onValue, ref } from "firebase/database";
 
-var isAdmin = null;
+var isAdmin;
 
 /** 
  * TODO:
@@ -50,7 +50,7 @@ function Login() {
         try{
             await login(email,password)
             UserIsAdmin()
-            setTimeout(() => { navigate("/home"); }, 400); //hahahaha setting a timer works lol
+            setTimeout(() => { navigate("/home"); }, 500); //hahahaha setting a timer works lol
             
     
         }catch(err){
