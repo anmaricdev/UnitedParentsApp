@@ -5,11 +5,10 @@ import { dbFS } from "../Firebase";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { isAdmin } from "./Login";
 
-//TODO: display the saved header and body from the database to the card properly everytime it reloads reload until deleted
-//It's working, just need to find out how to Load it after the DOM loaded
-//MAIN ERROR: "Uncaught TypeError: Cannot read property 'textContent' of null error"
+// MAIN ERROR: "Uncaught TypeError: Cannot read property 'textContent' of null error"
 
-//Author: Ante Maric 1273904
+// Author: Ante Maric 1273904
+
 function Home() {
     
     var headerID = document.getElementById("newHeader")
@@ -21,6 +20,31 @@ function Home() {
     console.log(header);
     console.log(body);
     
+    const [sendData, setData] = useState({
+        sendBody: body,
+        sendHeader: header
+    });
+    
+    const handleData = async (e) =>{
+        e.preventDefault()
+        try{
+            setData( prevValues => {
+                return { ...prevValues,[e.target.name]: e.target.value}
+                }
+             )
+            const cardDataRef = await addDoc(collection(dbFS, "admin"), {
+                 body: sendData.sendBody,
+                 header: sendData.sendHeader,
+                 updatedAt: Timestamp.fromDate(new Date())
+               });
+            console.log("Header: ", sendData.sendHeader)
+            console.log("Body: " , sendData.sendBody)
+            console.log("ID of current card update: ", cardDataRef.id);
+        }catch(err){
+            alert(err)
+        }
+    }
+
    function editContentBox(){
         document.getElementById("cardHeader").setAttribute('contenteditable', 'true')
         document.getElementById("cardBody").setAttribute('contenteditable', 'true')
@@ -46,31 +70,6 @@ function Home() {
                 e.preventDefault();
                 e.target.closest('div').remove();
             });
-        }
-    }
-
-    const [sendData, setData] = useState({
-        sendBody: body,
-        sendHeader: header
-    });
-    
-    const handleData = async (e) =>{
-        e.preventDefault()
-        try{
-            setData( prevValues => {
-                return { ...prevValues,[e.target.name]: e.target.value}
-                }
-             )
-            const cardDataRef = await addDoc(collection(dbFS, "admin"), {
-                 body: sendData.sendBody,
-                 header: sendData.sendHeader,
-                 updatedAt: Timestamp.fromDate(new Date())
-               });
-            console.log("Header: ", sendData.sendHeader)
-            console.log("Body: " , sendData.sendBody)
-            console.log("ID of current card update: ", cardDataRef.id);
-        }catch(err){
-            alert(err)
         }
     }
 
@@ -101,6 +100,7 @@ function Home() {
 
     // Sets the visibility of the buttons to hidden if the user is not an admin
     // https://www.w3schools.com/jsref/prop_style_display.asp
+    
     /*
     if(isAdmin === true){
         document.getElementById("editButton").style.display = "block";
