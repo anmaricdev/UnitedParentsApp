@@ -25,6 +25,7 @@ function Settings() {
     const navigate = useNavigate()
     const [sendMessage, setMess] = useState()
 
+    /*
     //Ante Maric(38-43,45) & Eneas Harispe(34-37,44,46-51)
     const handleMessage = async (e) =>{
         e.preventDefault()
@@ -44,8 +45,9 @@ function Settings() {
             setError(err.message);
         }
     }
+    */
 
-    /*
+    
     //Ante Maric
     const getMessage = async (e) =>{
         e.preventDefault()
@@ -60,23 +62,23 @@ function Settings() {
             console.log("No such document!");
           }
         }catch(err){
-            setError(err.message);
+            alert(err)
         }
 
     }
-    */
     
-    //Eneas Harispe
+    //Eneas Harispe & Ante Maric
     return (
         <div>
         <div>
         <div className="card" id="cardAdmin">
             <div class="card-body">
                 <h1 class="card-title" id="cardHeader">Chat test from firebase:</h1>
-                <p class="card-text" id="cardBody"></p>
+                <p class="card-text" id="cardBody">{getMessage}</p>
+                <button className="chatSubmitButton" onClick={getMessage}> show message</button>
             </div>
         </div>
-        <Form onSubmit = {handleMessage}>
+        <Form /*onSubmit = {handleMessage}*/>
             <div className="chatBoxBottom">
             <textarea 
             className="chatMessageInput"
