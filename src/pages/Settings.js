@@ -25,7 +25,7 @@ function Settings() {
     const navigate = useNavigate()
     const [sendMessage, setMess] = useState()
 
-    /*
+    
     //Ante Maric(34-41) & Eneas Harispe(30-33, 42-48)
     const handleMessage = async (e) =>{
         e.preventDefault()
@@ -45,7 +45,6 @@ function Settings() {
             setError(err.message);
         }
     }
-    */
 
     
     //Ante Maric - 1273904
@@ -78,7 +77,7 @@ function Settings() {
                 <button className="chatSubmitButton" onClick={getMessage}> show message</button>
             </div>
         </div>
-        <Form /*onSubmit = {handleMessage}*/>
+        <Form onSubmit = {handleMessage}>
             <div className="chatBoxBottom">
             <textarea 
             className="chatMessageInput"
